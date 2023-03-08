@@ -1,0 +1,176 @@
+What is Emmet?
+
+shortcut to boiler plate which are made avaliable in built
+It allows you to type shortcuts that are then expanded into full pieces of code.
+
+Difference between a Library and Framework?
+ A libary is used for the sake of providing facility/functionality  and also promotes the code resuability while a framework is a supporting structure , here we fill the structure with our own needs
+https://www.youtube.com/watch?v=LimOOe6I4eo&ab_channel=Codecademy
+
+What is CDN? Why do we use it?
+content delivery network , Inc uptime , speed , secuity from d-doc attack and reduces the time
+
+ Why is React known as React? 
+ react : Because it reacts to state change in virtul dom which evantually changes the real DOM changed entity only
+ https://www.youtube.com/watch?v=N3AkSS5hXMA&ab_channel=ProgrammingwithMosh
+
+ What is crossorigin in script tag?
+ https://www.youtube.com/watch?v=tcLW5d0KAYE&ab_channel=AkshaySaini
+
+Diffrence bw react and reactDOM ?
+React is the core libary , while ReactDOM is the libary injected for the webversion of the React which give us the access to the DOM .
+
+ What is difference between react.development.js and react.production.js files via CDN
+ react production is minified in nature hence very fast and effivcient as compared to the devlopment one
+
+What is async and defer?
+  async : This refers to fetching(dowloading) the script encountered while prasing
+  defer : This refers to executing the fetched script 
+  https://www.youtube.com/watch?v=IrHmpdORLu8&t=246s&ab_channel=AkshaySaini
+
+  
+
+Bundlers : vite , parcel , webpacks
+
+A bundler do the folowing things :
+
+* HMR : Hot Module Replacement , means auto reload on any change
+
+* File Watcher Algorithm(c++) : This keep a check on the file for any change
+
+* Parser minifies the code
+
+* Bundles things up
+
+* Cleaning our code
+
+* Super fast build Algorithm
+
+* Image optimization
+
+* Caching while devlopment
+
+* Compatable with the older version of browser(BrowserList)
+
+* Zero config Bundler 
+
+* transitive dependies
+
+* Compression
+
+* Tree shaking( Removes the deadcode From the App)
+
+npm init :means  npm initialize and genrate a package.json
+npm init -y :means  npm initialize without any question asked and genrate a package.json
+
+npm is a package manager for the core and the helper packages.
+
+package-lock.json keeps a exact track of the current package version while the package.json keeps only the mention version of the package with tilda
+
+Never put package-lock.json into git-ignore or else you will go into the error og it is working in my system but not on the production ,
+maintain the hash as well 
+
+
+npm install -D parcel : This is a dev depencie
+npm i -D parcel : This is a dev depencie
+npm install --save-dev parcel : This is also a dev depencie
+
+caret(Used for minor version's) : (^) , tilde(Used for major version's) : (~) ===== auto-upgrade 
+
+npm install react
+npm i react
+npm i react-dom
+
+npx parcel index.html : here x means execute parcel with the entery file as index.html , and build an devlopment build to host it on the server
+
+npx parcel build index.html : means build an production build to host it on the server
+
+npx parcel index.html --https : for https server
+
+///////////////////////////////
+
+
+
+////////////////////////////////
+
+.parcel-cache means space reserved by parcel for its use
+
+
+
+Anything which we could re-genrate is been put on git-ignore
+
+browserlist ensure that our app works on the respective version as mentioned
+
+* git init to initalize a git repository
+
+* JSX stands for JavaScript XML. JSX allows us to write HTML in React. JSX makes it easier to write and add HTML in React.
+
+* JSX should not be implemented directly by browsers, but instead requires a compiler to transform it into ECMAScript. This is where Babel comes in.
+
+* To make starting of the application easy using react bundler we have added start : "parcel index.html" in package.json under its scrpts key also now in the terminal we write "npm run start" which earlier use to be "npx parcel index.html"
+
+* npx == npm run , npx parcel index.html
+
+* shortcut : npm run start == npm start
+
+* shortcut : npm run build
+
+* To remove console.log addtional plugin will be needed like  : babel-plugin-transform-remove-console
+
+* We also need to configure this which could be find in the npm page only how to do this ,
+ That is make a file using .babelrc and then copy as it is on NPM website
+
+* Each element should always have a key in it
+
+* React use the help of  diffe algorithm to keep a track of the Keys
+
+* JSX is the replacemnt of react.createElement
+
+* There is also a package.json present in node module
+
+* There are two type of component in javascript : class based and function based component
+
+* Every Componet name starts with a capital letter
+
+* JSX always santizes our application from potencial threats
+
+* Babel(A transpiler/compiler) convert JSX to react.createElement which is an Object which is then react convert it to html to load it on the Dom
+
+* <React.Fragment></React.Fragment> OR <></> is a react component provided by React
+
+* Big websites uses config driven UI
+
+* Optional chaining : ?.
+
+* We keep virtual dom with us for Reconciliation in react , That is to detect change bw actual and virtual dom using diff algorithm we also require a key for that as well 
+
+* We could not provid sylig to a React Fragment
+
+* Config Driven UI : This method is been used for changing the UI on te bases of the backend UI
+
+* Props means passing Arguments to functional component < comp a={"dad"} />  
+
+* Key is not a "Props"
+
+* export default Header;
+import Header from './dcsdc';
+
+* export const Title = () => { // Named import 
+}
+import {Title} from './dcsdc';
+
+
+// import Header , {Title} from './components/Header'; Here header is default one while Title is normal one
+//  import { Title , Header } from './components/Header'; Here Both of them are normale one
+// import * as obj from './components/Header' ; // This will import al things 
+ 
+obj.header
+
+* In default export Renaming is possible
+* BUt not possible in normale one  
+
+* We put All the static details in the config file/constant file
+
+
+* To make <input value={} onChange={(e) => changeFunc(e.target.value) }/> tag work in react it is compulsory to have an onChange prop in the tag
+
