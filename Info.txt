@@ -15,6 +15,7 @@ content delivery network , Inc uptime , speed , secuity from d-doc attack and re
  https://www.youtube.com/watch?v=N3AkSS5hXMA&ab_channel=ProgrammingwithMosh
 
  What is crossorigin in script tag?
+ Very Helpfull in this morden world which is based on loosely coupled microservice architure 
  https://www.youtube.com/watch?v=tcLW5d0KAYE&ab_channel=AkshaySaini
 
 Diffrence bw react and reactDOM ?
@@ -120,7 +121,7 @@ browserlist ensure that our app works on the respective version as mentioned
 * We also need to configure this which could be find in the npm page only how to do this ,
  That is make a file using .babelrc and then copy as it is on NPM website
 
-* Each element should always have a key in it
+* Each React element should always have a key in it
 
 * React use the help of  diffe algorithm to keep a track of the Keys
 
@@ -174,3 +175,19 @@ obj.header
 
 * To make <input value={} onChange={(e) => changeFunc(e.target.value) }/> tag work in react it is compulsory to have an onChange prop in the tag
 
+* Props name should be same through out the sending and reciving process
+
+* When we write any thing in the search bar(Input Tag) react rerenders the whole componenet this changes need to get refected in the search bar for that we take the help og useState and onChage method
+
+* e.target.value : It gives us the real time change in value of the input feild
+
+* When we need to mantain a variable that changes then in that case we need to make it a react variable that is a useState variable
+
+* what/why is state ?
+ When we change a state variable then in that case react would know that the value has changed has thus it need to re-render the changes in that component to refelect the change in the DOM  , while when we change a normale variable no state change takes place hence no re-render is there which result no change 
+
+
+* what/why is React Hook ?
+It is nothing but just a javascript function given to us by react which provid us some functionality
+
+* what/why is state ?
