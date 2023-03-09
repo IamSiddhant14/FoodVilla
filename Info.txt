@@ -190,4 +190,21 @@ obj.header
 * what/why is React Hook ?
 It is nothing but just a javascript function given to us by react which provid us some functionality
 
-* what/why is state ?
+* Microservice arciture results in sepration of concer
+
+* page loads -> call API -> Fill the data ( render the page)
+
+* page loads -> render the page -> API -> Update the UI
+
+* useEffect hook will render after every render is been been finised or when in the value of the argument mentioned in the call back array changes and an empty array means call it just once when the component loads
+
+* A render takes place whenever a state changes or the props associated to a component changes 
+
+* A useEffect default render takes place when all the render are been done 
+
+ // empty dependency array => once after render
+ // dep arry [searchText] => once after initial render + everytime after redern (my searchText changes)
+
+ * Shimmer UI is the morden day UI;
+
+ * { Here in this curly bracket we could only write expression and not a statement , a expression is one which boils down to numeric value }

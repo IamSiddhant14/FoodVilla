@@ -1,4 +1,5 @@
 import { IMG_TITLE } from "./constants"
+import { useState } from "react"
 
 const Title = () => {
     return (
@@ -9,7 +10,14 @@ const Title = () => {
     )
 }
 
+const authenticateUser = () => {
+    return 'true';
+}
+
+
 const Header = () => {
+
+    const [toggle, setToggle] = useState('login')
 
     return (
 
@@ -27,10 +35,21 @@ const Header = () => {
 
             </div>
 
+            <button className="btn" onClick={(e) => {
+
+                if (toggle == 'login') {
+                    setToggle('logout')
+
+                } else {
+                    setToggle('login')
+                }
+
+            }}>{toggle}</button>
+
         </div>
 
     )
 }
 
 
-export default Header ;
+export default Header;
