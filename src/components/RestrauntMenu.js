@@ -10,6 +10,16 @@ const RestrauntMenu = () => {
 
   useEffect(() => {
     getRestaurantInfo();
+
+    const id = setInterval(()=>{
+      console.log("Set interval running in RestaurantMenu component ")
+     }, 1000)
+ 
+     return () => {
+       console.log("component will unmount ");
+       clearInterval(id)
+     }
+
   }, []);
 
   const [restaurant, setRestaurant] = useState({});

@@ -245,3 +245,48 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 * formik help us to create form in react
 
 * Modular , resuable , scalble , maintable , testable , clearnerf
+
+* we do not update state directely instaed we take the help of setState in class component and functional component as well
+
+* In class components first constructor is called then render is been called then componentdidmount(After firt render same like that od useEffect with([])) is been called   then componentDidUpdate(After each render like that of useEffect()) is been called  
+
+* componentDidMount mai API ki Calling hoti hai
+
+* Parent - constructor
+  Parent - render
+  child - constructor
+  child - render
+  child - componentDidMount
+  parent - componentDidMount 
+
+*Parent Constructor
+ Parent render
+    First Child constructor
+    First Child render
+    Second Child constructor
+    Second Child render
+
+    DOM UPDATED for children
+
+    first Child componentDidMount
+    Second Child componentDid
+  Parent componentDidMount
+
+* we could make componentDidMount async but could not make callback function inside useEffect as async 
+
+* If child  componentDidMount is async in nature then parent componetdidmount is been called first then the parent componentDidMount
+
+* Render face -> Commit face
+
+* componentDidUnMount will be called when we go some other page
+
+* 
+  useEffect(() => {
+    getRestaurantInfo();
+
+    return () => {
+      console.log("component will unmount ")
+    }
+  }, []);
+
+  The above return function will work when we leave that page and perform unmounting 

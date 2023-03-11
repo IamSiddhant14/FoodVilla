@@ -43,7 +43,10 @@ const AppLayout = () => {
   return (
     <React.Fragment>
       <Header />
+      
+      {/* Children are aways been rendered inside outlet */}
       <Outlet />
+      
       <Footer />
     </React.Fragment>
   )
