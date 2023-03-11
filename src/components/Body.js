@@ -1,6 +1,7 @@
 import { restrautList } from "./constants";
 import { IMG_CDN_URL } from "./constants";
 import Shimmer from "./Shimmer";
+import { Link } from 'react-router-dom'
 
 import { useState, useEffect } from "react";
 
@@ -31,6 +32,7 @@ const RestaurantCard = (props) => {
 }
 
 function filterData(input, rest) {
+
     const ans = rest.filter((re) => {
         return re?.data?.name?.toLowerCase().includes(input.toLowerCase());
     })
@@ -48,7 +50,7 @@ const Body = () => {
 
     const [searchInput, setSearchInput] = useState("");
 
-    const [allRestaurants, setAllRestaurants] = useState(restrautList);
+    const [allRestaurants, setAllRestaurants] = useState([]);
 
     const [filteredRestaurants, setFilteredRestaurants] = useState([]);
 
@@ -74,7 +76,7 @@ const Body = () => {
     if (!allRestaurants) return null;
 
 
-    return allRestaurants?.length === 0 ? (<Shimmer />) : (
+    return allRestaurants?.length === 0 ? (<Shimmer/>) : (
 
         <>
             {
@@ -131,12 +133,14 @@ const Body = () => {
 
                     filteredRestaurants.map((restaurant) => {
 
-
-                        return <RestaurantCard name={restaurant.data.name} star={restaurant.data.avgRating}
+                         return <Link to={"/restaurant/" + restaurant.data.id}  key={restaurant.data.id}>
+                          <RestaurantCard name={restaurant.data.name} star={restaurant.data.avgRating}
                             cus={restaurant.data.cuisines}
                             img={restaurant.data.cloudinaryImageId}
-                            key={restaurant.data.uuid}
+                            
                         />
+                         </Link>
+                        
 
                         // return <RestaurantCard {...restaurant.data}
                         // />

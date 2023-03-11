@@ -208,3 +208,40 @@ It is nothing but just a javascript function given to us by react which provid u
  * Shimmer UI is the morden day UI;
 
  * { Here in this curly bracket we could only write expression and not a statement , a expression is one which boils down to numeric value }
+
+ * never create a component inside another component 
+
+ * We create hooks after functional component and before return . Thats is bewteen them 
+
+ * In Assests folder we keep all the images , while in the components foler we keep all the components and in the constants folder we keep all the static data 
+   
+ * npm i react-router-dom
+
+ * Hooks start with a use keyword 
+
+ * This is used to get error ,  
+  import { useRouteError } from "react-router-dom"; 
+const err = useRouteError() ;
+consle.log( err.status + " : " + err.statusText)
+
+* client side routing means we are not getting anything from the server instead we have all of it we are just loading it   
+
+
+* Object.values converts list of object to a array of object
+          {Object.values(restaurant?.menu?.items).map((item) => (
+            <li key={item.id}>{item.name}</li>
+          ))}
+
+ * Array(10).fill("").map((e , i) => (
+                <div className="shimmer-card" key={i}>
+
+                </div>
+            ))
+
+* consitional rendering is very important when we are not getting notdefined or null , like : 
+
+return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
+
+* formik help us to create form in react
+
+* Modular , resuable , scalble , maintable , testable , clearnerf

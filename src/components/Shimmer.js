@@ -1,29 +1,19 @@
 const Shimmer = () =>{
-    <>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    <h1>Loading Shimmer UI........</h1>
-    </>
+    return (
+     <div className="restaurant-list">
+
+        {
+            Array(10).fill("").map((e , i) => (
+                <div className="shimmer-card" key={i}>
+
+                </div>
+            ))
+        }
+
+
+     </div>
+    )
+    
 }
 
 export default Shimmer ;
