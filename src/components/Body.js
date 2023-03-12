@@ -2,14 +2,16 @@ import { restrautList } from "./constants";
 import { IMG_CDN_URL } from "./constants";
 import Shimmer from "./Shimmer";
 import { Link } from 'react-router-dom'
-
+import { filterData } from '../utils/helper'
+import  useOnline from '../utils/useOnline'
 import { useState, useEffect } from "react";
+
 
 const RestaurantCard = (props) => {
 
     // const RestaurantCard = ({ name , star , cus }) => {
 
-    // const RestaurantCard = ({ a , b, c, d }) => // Here a , b, c, d should be the exact name of the keys 
+    // const RestaurantCard = ({ a , b, c, d }) => // Here a , b, c, d should be of the exact same name as of the keys 
     // {    < RestaurantCard {...RestaurantCard} />
 
     // const RestaurantCard = ({passingProps , key}) => {
@@ -31,14 +33,6 @@ const RestaurantCard = (props) => {
     )
 }
 
-function filterData(input, rest) {
-
-    const ans = rest.filter((re) => {
-        return re?.data?.name?.toLowerCase().includes(input.toLowerCase());
-    })
-
-    return ans;
-}
 
 const Body = () => {
 
@@ -56,13 +50,17 @@ const Body = () => {
 
     const [clicked, setClicked] = useState('Search');
 
+
+
     useEffect(() => {
         getRestaurants();
     }, [])
 
+
     async function getRestaurants() {
         const data = await fetch(
-            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=12.9351929&lng=77.62448069999999&page_type=DESKTOP_WEB_LISTING"
+            "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.1603516&lng=77.45585539999999&page_type=DESKTOP_WEB_LISTING"
+            
 
         );
 
@@ -72,6 +70,15 @@ const Body = () => {
 
         setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     }
+
+
+  const isOnline = useOnline();
+
+  if (isOnline == false) {
+    return <h1>🔴 Offline, please check your internet connection!!</h1>;
+  }
+
+
     // This is called early return 
     if (!allRestaurants) return null;
 

@@ -2,48 +2,26 @@ import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { IMG_CDN_URL } from "./constants";
 import Shimmer from './Shimmer';
+import useRestaurant from "../utils/useRestaurant";
 
 const RestrauntMenu = () => {
 
   const ans = useParams();
   // console.log(ans.id)
-
-  useEffect(() => {
-    getRestaurantInfo();
-
-    const id = setInterval(()=>{
-      console.log("Set interval running in RestaurantMenu component ")
-     }, 1000)
- 
-     return () => {
-       console.log("component will unmount ");
-       clearInterval(id)
-     }
-
-  }, []);
-
-  const [restaurant, setRestaurant] = useState({});
-
-  async function getRestaurantInfo() {
-
-    const data = await fetch("https://www.swiggy.com/dapi/menu/v4/full?lat=12.9351929&lng=77.62448069999999&menuId=" + ans.id );
-
-    const json = await data.json();
-
-    setRestaurant(json.data);
-
-  }
-
+  
+  const restaurant = useRestaurant(ans.id);// Here this is coustm made Hook
+  
   // Early return 
   // if( !restaurant ){
   //   return <Shimmer/>
   // }
-
+  // console.log(restaurant)
   return (!restaurant?.menu) ? (<Shimmer />): (
 
     <div className="menu" >
-
+      {/* console.log('i am here') */}
       <div>
+      
         <h1>Restaurant id: {ans.id}</h1>
         <h2>{restaurant.name}</h2>
         <img src={IMG_CDN_URL + restaurant?.cloudinaryImageId} />

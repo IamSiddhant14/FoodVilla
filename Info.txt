@@ -248,7 +248,7 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
 * we do not update state directely instaed we take the help of setState in class component and functional component as well
 
-* In class components first constructor is called then render is been called then componentdidmount(After firt render same like that od useEffect with([])) is been called   then componentDidUpdate(After each render like that of useEffect()) is been called  
+* In class components first constructor is called then render is been called then componentdidmount(After firt render same like that od useEffect with([])) is been called   then componentDidUpdate( fWhen ever either the state changes or the prop changes ) is been called  
 
 * componentDidMount mai API ki Calling hoti hai
 
@@ -290,3 +290,28 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
   }, []);
 
   The above return function will work when we leave that page and perform unmounting 
+
+* Component will unmount is been used for clean-ups
+
+* Utils folder mai hmm loog apne sare functions rakh tai hai jo bhi reusable hote hai 
+
+* modularity means we have broken down code into meaningful pieces
+
+* If one function is present inside one single file then in that case we will use default export 
+
+* Hook is not but just a function 
+
+* 
+        const handleOnline = () => {
+            setIsOnline(false);
+        }
+
+        window.addEventListener('online', handleOnline);
+
+         window.removeEventListener('online', handleOnline)
+
+* Early return should always take place before main return statement
+
+* chuking , code spliting , dynamic bundling , lazy loading , on Demanding loading eg : instamart
+
+* 
