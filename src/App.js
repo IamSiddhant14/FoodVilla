@@ -13,7 +13,7 @@ import RestrauntMenu
 import Profile from './components/Profile';
 import Shimmer from './components/Shimmer';
 // import Instamart from './components/Instamart'; Lazyloading/chuking taking place 
-
+import Cart from './components/Cart';
 /*
 Header
 
@@ -82,6 +82,10 @@ const appRouter = createBrowserRouter([
       {
         path: "/",
         element: <Body/>
+      },
+      {
+         path:'/cart',
+         element: <Cart/>
       },
       {
         path: "/restaurant/:id",

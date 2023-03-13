@@ -314,4 +314,21 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
 * chuking , code spliting , dynamic bundling , lazy loading , on Demanding loading eg : instamart
 
-* 
+* backgroundColor and not background-color 
+
+* a UI libary bring in consistance of design , save time , and also effectent as well 
+
+cons : Bundle size increases , loos a lot of control over the design  
+
+*External CSS
+scss 
+Inline css
+inline classcomponet libary - MUI , Base UI , Ant UI , Chakra UI
+Styled Component
+Tailwind css( Css framework )
+: reusable , css on the go , less bundel size , pre build componenet  , flexible/costumsable ,    
+
+* w-96
+* w-[200px] This is a dynamic parameter and called square bracket notation 
+
+* tailwind dont follow prefix match search 

@@ -9,7 +9,7 @@ const Title = () => {
     return (
         <a href="/">
 
-            <img className="logo" alt="logo" src={img} />
+            <img className="h-28 m-2 rounded-full bg-slate-200  " alt="logo" src={img} />
         </a>
     )
 }
@@ -27,30 +27,36 @@ const Header = () => {
 
     return (
 
-        <div className='header'>
-            <Title />
+        <div className='flex justify-between bg-gray-200'>
+            <Title  />
 
-            <div className='nav-items'>
+            <div className='flex flex-col items-center'>
 
-                <ul>
+                <ul className="flex pt-4 ">
 
-                    <li><Link to="/">Home</Link></li>
-                    <li><Link to="/about">About</Link></li>
-                    <li> <Link to="/contact">Contact us</Link></li>
-                    <li> <Link to="/cart">Cart</Link></li>
-                    <li> <Link to="/instamart">Instamart</Link></li>
+                    <li className=" ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"><Link to="/">Home</Link></li>
+
+                    <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"><Link to="/about">About</Link></li>
+
+                    <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"> <Link to="/contact">Contact</Link></li>
+
+                    <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"
+                    > <Link to="/cart">Cart</Link></li>
+
+                    <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"> <Link to="/instamart">Instamart</Link></li>
+
 
                 </ul>
 
-                <h1>{isOnline ? "✅Online " : "🔴Offline"}</h1>
+                <h1 className="pt-5 shadow-lg'" >{isOnline ? "✅Online " : "🔴Offline"}</h1>
 
             </div>
 
-            <button className="btn" onClick={(e) => {
+            <button class="rounded-full shadow-lg' m-5 mt-10 px-8 h-10 bg-white p-2" onClick={(e) => {
 
                 if (toggle == 'login') {
                     setToggle('logout')
-                    
+
                 } else {
                     setToggle('login')
                 }
