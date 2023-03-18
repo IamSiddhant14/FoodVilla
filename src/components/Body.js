@@ -2,43 +2,17 @@ import { restrautList } from "./constants";
 import { IMG_CDN_URL } from "./constants";
 import Shimmer from "./Shimmer";
 import { Link } from 'react-router-dom'
-import { filterData } from '../utils/helper'
+// import { filterData } from '../utils/helper'
 import useOnline from '../utils/useOnline'
 import { useState, useEffect } from "react";
+import UserContext from "../utils/UserContext";
+import { useContext } from "react";
+import RestaurantCard from "./RestaurantCard";
 
 
-const RestaurantCard = (props) => {
-
-    // const RestaurantCard = ({ name , star , cus }) => {
-
-    // const RestaurantCard = ({ a , b, c, d }) => // Here a , b, c, d should be of the exact same name as of the keys 
-    // {    < RestaurantCard {...RestaurantCard} />
-
-    // const RestaurantCard = ({passingProps , key}) => {
-
-    // const { a , b, c, d : f} = passingProps; we could further destrure as well
-
-    // console.log(props.passingProps);
-
-    const { name, star, cus, img, cost, maxDeliveryTime } = props;
-    // const { name , star , cuisines } = props;
-
-    return (
-        <div class='h-96 w-600 m-4 rounded-xl bg-slate-200 flex flex-col items-start pl-2 shadow-lg'>
-            <img class='bg-cyan-800 shadow-lg shadow-cyan-500/100 h-40 m-4 text-2xl rounded-xl' src={IMG_CDN_URL + img} />
-            <h2 style={{ padding: '4px', color: "black", backgroundColor: "white", borderRadius: 10 }}>{name}</h2>
-            <h3 class="pt-2">{cus.slice(0, 3).join(" , ")}</h3>
-            <h4 class="pt-2"> ★ {star}</h4>
-            <h4 class="pt-2"> {cost}</h4>
-            <h4 class="pt-2" > {maxDeliveryTime}</h4>
-        </div>
-    )
-}
 
 
 const Body = () => {
-
-
 
     // Here searchText is local state variable
     //Here argument is default variable , here searchInput is the variable and setSearchInput is a function which is used to modifie searchText
@@ -52,6 +26,8 @@ const Body = () => {
 
     const [clicked, setClicked] = useState('Search');
 
+    const { user, setUser } = useContext(UserContext);
+
 
 
     useEffect(() => {
@@ -60,6 +36,7 @@ const Body = () => {
 
 
     async function getRestaurants() {
+
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.1603516&lng=77.45585539999999&page_type=DESKTOP_WEB_LISTING"
 
@@ -69,6 +46,9 @@ const Body = () => {
         const json = await data.json();
 
         setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+
+        // setAllRestaurants(json?.data?.cards[0]?.data?.data?.cards);
+        // console.log(json?.data?.cards[0]?.data?.data?.cards);
 
         setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
     }
@@ -81,20 +61,26 @@ const Body = () => {
     }
 
 
+    // Every component in react maintain a state and we could put all variable in that state  ,when we create a local varible we use state in it 
+
     // This is called early return 
-    if (!allRestaurants) return null;
+    // if (!allRestaurants) return null;
 
+    function filterData(input, rest) {
 
-    return allRestaurants?.length === 0 ? (<Shimmer />) : (
+        const ans = rest.filter((re) => {
 
-        <>
-            {
-                /*
-                
-                Every component in react maintain a state and we could put all variable in that state  ,when we create a local varible we use state in it 
-    
-                */
-            }
+            return re?.data?.name?.toLowerCase().includes(input.toLowerCase());
+
+        })
+
+        return ans;
+    }
+
+    return allRestaurants.length == 0 ? <Shimmer /> : 
+
+    <>
+
 
             <div className="p-5 bg-gray-300 m-4 rounded ">
 
@@ -102,7 +88,7 @@ const Body = () => {
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
 
-                <button class="rounded-full ml-5 shadow-lg bg-white p-2" onClick={(e) => {
+                <button className="rounded-full ml-5 shadow-lg bg-white p-2" onClick={(e) => {
 
                     if (clicked === 'Search') {
 
@@ -126,14 +112,16 @@ const Body = () => {
 
 
 
-                }}><i class="fa fa-search"></i> {clicked}</button>
+                }}><i className="fa fa-search"></i> {clicked}</button>
+
+                {/* <input type="text" value={user.name} onChange = {(e)=> setUser({name:e.target.value, email:"example@gmail.com"}) }/> */}
                 {/* onClick will call the setClicked varible when it is been clicked */}
             </div>
 
             <div className='flex flex-wrap'>
 
                 {
-                    filteredRestaurants?.length === 0 ? <h1>No Restaurant Match Your Search</h1> :
+                    filteredRestaurants.length === 0 ? <h1>No Restaurant Match Your Search<Shimmer/></h1> :
 
 
 
@@ -162,9 +150,9 @@ const Body = () => {
 
             </div>
 
-        </>
+    </>
 
-    )
+    
 }
 
 export default Body;

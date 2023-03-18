@@ -34,16 +34,20 @@
     flex-wrap: wrap;
 }
 
+
+
+.menu {
+    display: flex;
+} */
+
 .shimmer-card {
     width: 200px;
     height: 200px;
     background: lightgrey;
     margin: 20px;
+    display: inline-block;
+    flex-wrap: nowrap
 }
-
-.menu {
-    display: flex;
-} */
 
 @tailwind base;
 @tailwind components;

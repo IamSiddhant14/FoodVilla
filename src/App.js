@@ -1,4 +1,4 @@
-import React , { lazy , Suspense } from 'react';
+import React , { lazy , Suspense , useState } from 'react';
 import ReactDOM from 'react-dom/client';
 
 import Header from './components/Header';
@@ -10,10 +10,11 @@ import Error from './components/Error';
 import Contact from './components/Contact'
 import RestrauntMenu
  from './components/RestrauntMenu';
-import Profile from './components/Profile';
+import Profile from './components/Profile';  
 import Shimmer from './components/Shimmer';
 // import Instamart from './components/Instamart'; Lazyloading/chuking taking place 
 import Cart from './components/Cart';
+import UserContext from './utils/UserContext';
 /*
 Header
 
@@ -24,7 +25,7 @@ Header
 
 Body
 
-  - SearchBarf
+  - SearchBar
   - Restaurant List
     - Restaurant Card
       -Image
@@ -44,9 +45,18 @@ Footer
 const Instamart = lazy(() => import ("./components/Instamart")) // Lazyloading / chuking / dynamic import  taking place 
 
 
-
+// Nested Children 
 const AppLayout = () => {
+
+  const [user , setUser] = useState({
+    name:"Ak",
+    email:"n@gmail.com"
+  })
+
   return (
+    <UserContext.Provider  value={{
+      user:user,setUser:setUser
+    }}>
     <React.Fragment>
       <Header />
       
@@ -55,6 +65,7 @@ const AppLayout = () => {
       
       <Footer />
     </React.Fragment>
+    </UserContext.Provider>
   )
 }
 
@@ -64,6 +75,8 @@ const appRouter = createBrowserRouter([
     path: "/",
     element: <AppLayout />,  
     errorElement: <Error />,
+    // Any error in this path ("/") will result in error component rendering 
+
     children: [
       {
         path: "/about",
@@ -71,7 +84,7 @@ const appRouter = createBrowserRouter([
         children:[
           {
             path:"profile",
-            element: <Profile/>
+            element: <Profile/>// Its outlet is been create in about.js file
           }
         ]
       },
@@ -99,7 +112,6 @@ const appRouter = createBrowserRouter([
       }
     ]
   }
-
 
 ])
 

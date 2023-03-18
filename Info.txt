@@ -29,7 +29,37 @@ What is async and defer?
   defer : This refers to executing the fetched script 
   https://www.youtube.com/watch?v=IrHmpdORLu8&t=246s&ab_channel=AkshaySaini
 
-  
+* To use react inside anything me it the root element :
+
+const h = React.createElement("h1" , {id: "abc" , class : 'classy'} , "hello world")
+
+const root = ReactDOM.createRoot(document.getElementById('root));
+
+root.render('h');
+
+// In html the function inside onClick is been called like this while in react it is diffrent- 
+* <button onClick="abc()"></button>
+function abc(){
+  console.log("Hello");
+}
+* <button onClick="abc"></button>
+function abc(){
+  console.log("Hello");
+}
+
+* react overrides everything which is written inside the root element and just only renders the react element <div id="root">
+        
+        <!-- React will override the DOM element -->
+
+        
+        <!-- All the below statement will not render and only the statement with on line 44 will render  -->
+        <!-- Hack , if line 18 is visible means there exist some error and hence the react element is not been rendered -->
+        <h1> Not Rendered </h1>
+
+        <h1>Hello World</h1>
+   
+        
+
 
 Bundlers : vite , parcel , webpacks
 
@@ -61,8 +91,16 @@ A bundler do the folowing things :
 
 * Tree shaking( Removes the deadcode From the App)
 
-npm init :means  npm initialize and genrate a package.json
+* Port number is also managed by parcel
+
+* Browser compatibility is also dine by it 
+
+Parcel dont do every thing it self instead it also takes the help of other NPM package 
+
+(STEP-1 ): npm init :means  npm initialize and genrate a package.json
 npm init -y :means  npm initialize without any question asked and genrate a package.json
+
+main IN PACKAGE.JSON REFFERS TO THE ENTRY POINT IN OUR App which is index.html 
 
 npm is a package manager for the core and the helper packages.
 
@@ -72,19 +110,19 @@ Never put package-lock.json into git-ignore or else you will go into the error o
 maintain the hash as well 
 
 
-npm install -D parcel : This is a dev depencie
+(STEP-2 ): npm install -D parcel : This is a dev depencie
 npm i -D parcel : This is a dev depencie
 npm install --save-dev parcel : This is also a dev depencie
 
 caret(Used for minor version's) : (^) , tilde(Used for major version's) : (~) ===== auto-upgrade 
 
-npm install react
+(STEP-3 ): npm install react react-dom
 npm i react
 npm i react-dom
 
-npx parcel index.html : here x means execute parcel with the entery file as index.html , and build an devlopment build to host it on the server
+(STEP-4 ): npx parcel index.html : here x means execute parcel with the entery file as index.html , and build an devlopment build to host it on the server
 
-npx parcel build index.html : means build an production build to host it on the server
+(STEP-4.1 (Optional) ):npx parcel build index.html : means build an production build to host it on the server
 
 npx parcel index.html --https : for https server
 
@@ -95,7 +133,7 @@ npx parcel index.html --https : for https server
 ////////////////////////////////
 
 .parcel-cache means space reserved by parcel for its use
-
+dist folder keeps a faster devlopment build for our project
 
 
 Anything which we could re-genrate is been put on git-ignore
@@ -106,7 +144,7 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * JSX stands for JavaScript XML. JSX allows us to write HTML in React. JSX makes it easier to write and add HTML in React.
 
-* JSX should not be implemented directly by browsers, but instead requires a compiler to transform it into ECMAScript. This is where Babel comes in.
+* JSX should not be implemented directly by browsers, but instead requires a compiler to transform/tranpiler it into ECMAScript. This is where Babel comes in.
 
 * To make starting of the application easy using react bundler we have added start : "parcel index.html" in package.json under its scrpts key also now in the terminal we write "npm run start" which earlier use to be "npx parcel index.html"
 
@@ -125,11 +163,19 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * React use the help of  diffe algorithm to keep a track of the Keys
 
+* root.render( heading ) : React element ; root.render(<Heading2/>) : React Component (functional)
+
+* To write element inside a react component we will simply write {heading}
+
+* <Heading2/>  == { Heading2() } same thing
+
 * JSX is the replacemnt of react.createElement
 
 * There is also a package.json present in node module
 
 * There are two type of component in javascript : class based and function based component
+
+* { Anything written inside it is been executed/rendered }
 
 * Every Componet name starts with a capital letter
 
@@ -139,13 +185,30 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * <React.Fragment></React.Fragment> OR <></> is a react component provided by React
 
+* When multiple lines are present then after return in a functional component we need to wrap every thing in ( ) as there exist multiple lines in it 
+
+* static , relative , absloute , fixed , sticky .
+
+* transform : transulate(x,y) ,
+transform : rotate(45deg) ,
+transition : background 3sec red 
+
+*style="background-color:powderblue;"
+ style={{backgroundColor: 'powderblue '}}
+
 * Big websites uses config driven UI
 
 * Optional chaining : ?.
 
-* We keep virtual dom with us for Reconciliation in react , That is to detect change bw actual and virtual dom using diff algorithm we also require a key for that as well 
+* Component inside another component is called component composition
 
-* We could not provid sylig to a React Fragment
+* There is a jsx element and a jsx component where element is nothing but a const head = ( <h1> Hello </h1>) and component is a functional or a class componet 
+
+* We keep virtual dom with us for Reconciliation in react , That is to detect change bw actual and virtual dom using diff algorithm we also require a key for that as well , Whenever there is any change in prop or state re-render of the entire component take place and updation of the changed part take place as well 
+
+* We could not provide styling to a React Fragment
+
+* [burger , pizza ].join(" , ") =>  burger, pizza 
 
 * Config Driven UI : This method is been used for changing the UI on te bases of the backend UI
 
@@ -153,17 +216,29 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * Key is not a "Props"
 
+* <RestaurantCard rest={restaurant[0]}  name="siddhant" />
+* <RestaurantCard rest={restaurant[0]}  name="siddhant" area={restaurant[0].area } />
+
 * export default Header;
 import Header from './dcsdc';
 
 * export const Title = () => { // Named import 
 }
+
+* In order to maintain a variable in react which changes itself we use a react variable(State varible ) as it value is been tracked by React unlike a normal variable 
+
 import {Title} from './dcsdc';
 
+(STEP-5 ): Create a folder called src and inside that create a folder component then make all the components inside that only , inside the source folder we will also keep our constant and app.js file as well
 
-// import Header , {Title} from './components/Header'; Here header is default one while Title is normal one
-//  import { Title , Header } from './components/Header'; Here Both of them are normale one
-// import * as obj from './components/Header' ; // This will import al things 
+* import Header , {Title} from './components/Header'; Here header is default one while Title is normal one
+
+*  import { Title , Header } from './components/Header'; Here Both of them are normale one
+
+* onClick={() => filtreData()}
+Here this function is only been called when it is been clicked and not when the js engine skims through the entire program 
+
+* import * as obj from './components/Header' ; // This will import al things 
  
 obj.header
 
@@ -173,13 +248,25 @@ obj.header
 * We put All the static details in the config file/constant file
 
 
-* To make <input value={} onChange={(e) => changeFunc(e.target.value) }/> tag work in react it is compulsory to have an onChange prop in the tag
+* To make <input value={} onChange={(e) => changeFunc(e.target.value) }/> tag work in react it is compulsory to have an onChange prop in the tag as we need to keep a track of the changing state variable and change its value use setstate function provided by the usestate  , when we change any regular variable value in onChange the although the value get changed but it woulnt reflect on the UI as no re-render is taking place 
 
 * Props name should be same through out the sending and reciving process
 
-* When we write any thing in the search bar(Input Tag) react rerenders the whole componenet this changes need to get refected in the search bar for that we take the help og useState and onChage method
+* (STEP-6 ): Make the router using the libary react-router-dom 
+
+* When we write any thing in the search bar(Input Tag) react rerenders the whole componenet this changes need to get refected in the search bar for that we take the help og useState and onChange method
+
+* All the children will go into the <outlet/> according to the route
 
 * e.target.value : It gives us the real time change in value of the input feild
+
+* arr.filtre((res) => {
+  return res.data.name.includes("abcss");
+
+  ALSO 
+
+   res.data.name.includes("abcss"); Here no explicit return keyword needed as "includes" return a boolean only but apart from this a return keyword is nessaccary 
+})
 
 * When we need to mantain a variable that changes then in that case we need to make it a react variable that is a useState variable
 
@@ -190,30 +277,87 @@ obj.header
 * what/why is React Hook ?
 It is nothing but just a javascript function given to us by react which provid us some functionality
 
-* Microservice arciture results in sepration of concer
+* Microservice arciture results in sepration of concer , all project are deployed on diffrent port but on the ame domain name , some companey have diffrent domain as well
 
 * page loads -> call API -> Fill the data ( render the page)
 
-* page loads -> render the page -> API -> Update the UI
+* page loads -> render the page with the structure only -> API -> Update the page with the data associated with that
 
-* useEffect hook will render after every render is been been finised or when in the value of the argument mentioned in the call back array changes and an empty array means call it just once when the component loads
+* useEffect hook will render after every time if no dependicie array is present  but when an empty array is present then it will be called just once , when the page loads and not after every render , but when some parameter is been mentioned inside the depencie array then in that case it will change every time the value of that parameter changes 
 
 * A render takes place whenever a state changes or the props associated to a component changes 
 
-* A useEffect default render takes place when all the render are been done 
+* A useEffect will work , when the initil page is been loaded , then after that useEffect will trigger to call the api at last and fill the datat into the rendered structure 
+
+* Array.map(( ) => {
+  return <div>
+      <h1>"hello"</h1>
+   </div>
+}) 
+
+* Array.map(( ) => (
+
+  Here return is not required since here we have used ()
+  <div>
+      <h1>"hello"</h1>
+   </div>
+)) 
+
+* After {} we should always place a js code and not a html elelment or else it will result in error 
 
  // empty dependency array => once after render
  // dep arry [searchText] => once after initial render + everytime after redern (my searchText changes)
 
  * Shimmer UI is the morden day UI;
 
- * { Here in this curly bracket we could only write expression and not a statement , a expression is one which boils down to numeric value }
+ * return (!restaurant) ? (<Shimmer/>) : ( <h1>"Hello"</h1>)
+
+ * { Here in this curly bracket we could only write expression and not a statement( which already have a value like let a = 10 is not possible) , a expression is one which boils down to numeric value }
 
  * never create a component inside another component 
 
+ * We never change the value of a state variable directly but with the help of the set function as it tell react to run the reconsiliation process
+
+ * Class Component: 
+  constructor(){
+  super()
+
+ this.state ={
+  a: 2 ,
+  b:3 
+ }
+  
+}
+
+render(){
+
+  return (
+
+ this.setState({
+  a:5
+ })
+
+OR
+
+ this.setState({
+  b:7
+ })
+
+OR
+
+ this.setState({
+  a:1
+  b:10
+ })
+
+  )
+}
+
+* Reconciliation happen in two face in face one constructor and render method is been called this fase is called the render face and in the face two componentDidMount is called this is called the commit face also one initial render takes place before commit face where shimmer / some components is been loaded and in face two updation of the DOM take place  
+
  * We create hooks after functional component and before return . Thats is bewteen them 
 
- * In Assests folder we keep all the images , while in the components foler we keep all the components and in the constants folder we keep all the static data 
+ * In Assests folder we keep all the images , while in the components folder we keep all the components and in the constants folder we keep all the static data 
    
  * npm i react-router-dom
 
@@ -243,6 +387,8 @@ consle.log( err.status + " : " + err.statusText)
 return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
 * formik help us to create form in react
+
+* 
 
 * Modular , resuable , scalble , maintable , testable , clearnerf
 
@@ -293,9 +439,13 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
 * Component will unmount is been used for clean-ups
 
+* Never use useState outside a functional component 
+
 * Utils folder mai hmm loog apne sare functions rakh tai hai jo bhi reusable hote hai 
 
 * modularity means we have broken down code into meaningful pieces
+
+* We should not create a component inside another component also we should also not create a function inside a component if not must 
 
 * If one function is present inside one single file then in that case we will use default export 
 
@@ -332,3 +482,13 @@ Tailwind css( Css framework )
 * w-[200px] This is a dynamic parameter and called square bracket notation 
 
 * tailwind dont follow prefix match search 
+
+* Data on the UI is been mained with the help of state and props. State is the local variable while props is been passed from one element to another element 
+
+* Props drilling means passing in data from one element to another continuesely  
+
+* We could not modiefie another sibling from it s sibbling to overcome it we use lifting up property 
+
+* context is like a usestate for the entire application
+
+* Ui layer + Data Layer = our App

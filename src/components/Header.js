@@ -1,8 +1,10 @@
 import { IMG_TITLE } from "./constants"
-import { useState } from "react";
 import img from '../assets/foodvilla.png';
 import { Link } from 'react-router-dom';
 import useOnline from "../utils/useOnline";
+import { useState , useContext } from "react";
+import UserContext from "../utils/UserContext";
+
 
 
 const Title = () => {
@@ -24,6 +26,10 @@ const Header = () => {
     const [toggle, setToggle] = useState('login');
 
     const isOnline = useOnline();
+
+    const {user
+    } = useContext(UserContext)
+    
 
     return (
 
@@ -52,7 +58,7 @@ const Header = () => {
 
             </div>
 
-            <button class="rounded-full shadow-lg' m-5 mt-10 px-8 h-10 bg-white p-2" onClick={(e) => {
+            <button className="rounded-full shadow-lg' m-5 mt-10 px-8 h-10 bg-white p-2" onClick={(e) => {
 
                 if (toggle == 'login') {
                     setToggle('logout')
@@ -61,7 +67,8 @@ const Header = () => {
                     setToggle('login')
                 }
 
-            }}>{toggle}</button>
+            }}>{  toggle}</button>
+            {/* }}>{ user.name + toggle}</button> */}
 
         </div>
 

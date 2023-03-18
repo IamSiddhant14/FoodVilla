@@ -1,10 +1,12 @@
 import React from 'react';
+import UserContext from '../utils/UserContext';
 
 class Profile extends React.Component {
 
     constructor(props){
 
         super(props);
+
        //Create State
         this.state={
             userInfo:{
@@ -24,7 +26,11 @@ class Profile extends React.Component {
         this.setState({
             userInfo: json 
         })
-        // console.log("componentDidMount")
+        
+
+       this.v = setInterval(() => { // Here" this" keyword is accessible through out the element 
+            console.log("componentDidMount")
+        })
     }
 
     componentDidUpdate(prevProps , prevState ){
@@ -34,10 +40,19 @@ class Profile extends React.Component {
         }
     }
 
+    componentWillUnmount(){
+
+        clearInterval(v);
+
+    }
+
     
     render() {
         return (
             <>
+                <UserContext.Consumer>
+                     {({user}) => <h4>{user.name}</h4>}
+                </UserContext.Consumer>
 
                 <h1>This is the profile page made using Profile Class Component </h1>
 
@@ -56,17 +71,6 @@ class Profile extends React.Component {
                 <img src={this.state.userInfo.avatar_url} />
                 <h2>Name : {this.state.userInfo.name }</h2>
                 <h2>Location : {this.state.userInfo.location }</h2>
-
-
-
-
-
-
-
-
-
-
-
 
 
 
