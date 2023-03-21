@@ -12,6 +12,7 @@ import RestaurantCard from "./RestaurantCard";
 
 
 
+
 const Body = () => {
 
     // Here searchText is local state variable
@@ -40,17 +41,21 @@ const Body = () => {
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.1603516&lng=77.45585539999999&page_type=DESKTOP_WEB_LISTING"
 
-
         );
 
         const json = await data.json();
 
+        // NEW
+
         setAllRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+        setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+
+        // console.log((json?.data?.cards[2]?.data?.data?.cards))
+
+        // OLD
 
         // setAllRestaurants(json?.data?.cards[0]?.data?.data?.cards);
-        // console.log(json?.data?.cards[0]?.data?.data?.cards);
-
-        setFilteredRestaurants(json?.data?.cards[2]?.data?.data?.cards);
+        // setFilteredRestaurants(json?.data?.cards[0]?.data?.data?.cards);
     }
 
 
@@ -76,7 +81,9 @@ const Body = () => {
 
         return ans;
     }
-
+    
+    // console.log(allRestaurants)
+    
     return allRestaurants.length == 0 ? <Shimmer /> : 
 
     <>
@@ -84,7 +91,7 @@ const Body = () => {
 
             <div className="p-5 bg-gray-300 m-4 rounded ">
 
-                <input type="text" className=" shadow-lg rounded-lg bg-white p-2 " placeholder="  Search" value={searchInput}
+                <input type="text" className=" shadow-lg rounded-lg bg-white p-2 focus:outline-none" placeholder="  Search" value={searchInput}
                     onChange={(e) => setSearchInput(e.target.value)}
                 />
 
@@ -114,8 +121,12 @@ const Body = () => {
 
                 }}><i className="fa fa-search"></i> {clicked}</button>
 
-                {/* <input type="text" value={user.name} onChange = {(e)=> setUser({name:e.target.value, email:"example@gmail.com"}) }/> */}
+                <input type="text" className=" shadow-lg rounded-lg bg-white p-2 ml-4 focus:outline-none" placeholder="  useContext" value={user.name} onChange = {(e)=> setUser({name:e.target.value, email: e.target.value +"@gmail.com"}) }/>
+
+                <h1 className="text-center">{user.email}</h1>
                 {/* onClick will call the setClicked varible when it is been clicked */}
+
+                
             </div>
 
             <div className='flex flex-wrap'>

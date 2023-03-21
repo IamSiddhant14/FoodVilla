@@ -181,7 +181,7 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * JSX always santizes our application from potencial threats
 
-* Babel(A transpiler/compiler) convert JSX to react.createElement which is an Object which is then react convert it to html to load it on the Dom
+* Babel(A transpiler/compiler) convert JSX to react.createElement , which is the converted into an Object which is then react convert it to html to load it on the Dom
 
 * <React.Fragment></React.Fragment> OR <></> is a react component provided by React
 
@@ -353,6 +353,8 @@ OR
   )
 }
 
+* 
+
 * Reconciliation happen in two face in face one constructor and render method is been called this fase is called the render face and in the face two componentDidMount is called this is called the commit face also one initial render takes place before commit face where shimmer / some components is been loaded and in face two updation of the DOM take place  
 
  * We create hooks after functional component and before return . Thats is bewteen them 
@@ -441,7 +443,7 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
 * Never use useState outside a functional component 
 
-* Utils folder mai hmm loog apne sare functions rakh tai hai jo bhi reusable hote hai 
+* Utils folder mai hmm loog apne sare functions rakh tai hai jo bhi reusable hote hai like couste m hook and etc 
 
 * modularity means we have broken down code into meaningful pieces
 
@@ -456,15 +458,30 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
             setIsOnline(false);
         }
 
+        const handleOffline = () => {
+            setIsOffline(true);
+        }
+
         window.addEventListener('online', handleOnline);
 
-         window.removeEventListener('online', handleOnline)
+         window.removeEventListener('offline', handleOffline)
 
 * Early return should always take place before main return statement
 
 * chuking , code spliting , dynamic bundling , lazy loading , on Demanding loading eg : instamart
 
-* backgroundColor and not background-color 
+const Instamart = lazy(() => import( "../componet /Instamart")) : this should present just after the import statement 
+
+path: "/instamart",
+element: (
+  <Suspend fallback={<Shimmer />}>
+     <Instamart />
+  <Suspend />
+)
+
+
+
+* backgroundColor and not background-color in react 
 
 * a UI libary bring in consistance of design , save time , and also effectent as well 
 
@@ -478,8 +495,16 @@ Styled Component
 Tailwind css( Css framework )
 : reusable , css on the go , less bundel size , pre build componenet  , flexible/costumsable ,    
 
-* w-96
-* w-[200px] This is a dynamic parameter and called square bracket notation 
+* EARLY RETURN IS REALLY A VERY POWERFULL THING 
+
+if( !online ){
+  return {<h1> "Offline 🔴"</h1>}
+}
+
+* 
+
+* className="w-96"
+* className=" w-[200px]" This is a dynamic parameter and called square bracket notation 
 
 * tailwind dont follow prefix match search 
 
@@ -487,8 +512,196 @@ Tailwind css( Css framework )
 
 * Props drilling means passing in data from one element to another continuesely  
 
-* We could not modiefie another sibling from it s sibbling to overcome it we use lifting up property 
+* We could not modiefie another sibling from it s sibbling to overcome it we use liftingTheStateUp property 
 
-* context is like a usestate for the entire application
+* context is like a usestate for the entire application , centraly accessible 
 
-* Ui layer + Data Layer = our App
+* UI layer + Data Layer = our App
+
+* Profiler is been used for determining how much time is been used in rendering each component 
+
+* componet in the redux tool of chrome help us in determining are the component architure is presesnt in real life 
+
+* props are for each component while usecontext is central in nature 
+
+* <UserContext.Consumer>{(val) => val.name }</UserContext.Consumer> This is used in class Component 
+
+* <UserContext.Provider value={}> <UserContext.Provider/> overrided the default value of CreateContext({})
+
+* UserContext.displayname = UserContext ;
+
+* We use "usecontext" to avoid prop drealing
+
+* Redux help in making code less cultered as companey to a normale context
+
+* Redux : store , slice , dispatch an ac    tion which calls a reducer(Function) which updates the slice of the store , selector give us access to the data stored in the store / Subcribing 
+
+* /**
+ * Create Store
+ *  - configureStore() - RTK
+ *
+ * Provide my stor to app
+ *  - <Provider store = {store}> - import from react-redux
+ *
+ * Slice
+ *  - RTK - createSlice({
+ *          name: "",
+ *          initialState:
+ *          reducers: {
+ *             addItem: (state, action)=> { state= action.payload}
+ *          }
+ *      })
+ *    export const {addItem, removeItem} = cartSlice.actions;
+ *    export default cartSlice.reducer;
+ *
+ * Put that Slice into Store
+ *      - {
+ *        reducer: {
+ *             cart: cartSlice,
+ *             user: userSlice
+ *         }
+ * }
+ *
+ * 
+
+
+ * Ways we handle data in our react App using the following ways :
+
+ -> state variable and props 
+
+ const [ isVariable ,  setVarible ] =  useState(false);
+
+ Now this variable "isVariable" is avaliable through out our component
+FC : console.log(isVariable);
+
+this.state = {
+  isVariable : false 
+}
+
+CC : console.log(this.state.isVariable)
+
+-> useContext :
+
+Reffer
+UserContext + profileClass.js + App.js + Header.js
+
+UserContext.js :
+
+import { CreateContext } from 'react';
+
+const userContext = CreateContext({
+  name : "Siddhant",
+  add : " Mahendra "
+})
+
+
+export  default userContext ;
+
+Header.js :
+
+import{ UserContext } from './utils/userContext';
+import useContext from 'react'
+
+
+const ele = useContext(userContext);
+const{ name } = ele ;
+
+App.js :
+
+import{ UserContext } from './utils/userContext';
+import useContext from 'react'
+
+<UserContext.Provider   value={{ user : 'prakhar' , add: 'Banglore' }}  > // This will modiefie the entire value of redux 
+   
+   
+        <Header />
+
+        {/* Children are aways been rendered inside outlet */}
+        <Outlet />
+
+        <Footer />
+
+
+</UserContext.Provider>
+
+
+-> Redux :
+
+Reffer
+store.js , cartSlice.js , App.js , RestrauntMenu 
+
+store.js :
+
+import { configureStore } from '@reduxjs/toolkit';
+import cartSlice from "./cartSlice";
+
+const store = configureStore({
+    reducer :{
+      cart : cartSlice
+    }
+})
+
+export default store ;
+
+cartSlice.js  : 
+
+import { createSlice } from '@reduxjs/toolkit';
+
+const cartSlice = createSlice({
+
+  name: 'Cart',
+
+  initialState : {
+    items :[]
+  },
+
+  reducers :{
+
+    addItem : ( state , action ) => {
+      state.items.push(action.payload);
+    },
+
+    removeItem : ( state , action ) => {
+      state.items.pop();
+    },
+
+    clearCart : (state , action ) => {
+      state.items= [];
+    }
+
+  }
+
+});
+
+export const { addItem ,removeItem , clearCart } = cartSlice.actions ;
+
+export default cartSlice.reducer ;
+
+App.js :
+
+import store from './util/store.js' ;
+import { Provider } from 'react-redux';
+
+<Provider store={store}>
+
+</Provider>
+
+
+Cart.js :
+
+import { useSelector } from 'react-redux' ;
+import { useDispatch } from 'react-redux' ;
+import { clearCart } from '../utils/cartSlice';
+import { addItem } from '../utils/cartSlice';
+
+const cartItem = useSelector((store)=> store.cart.items )
+
+const dispatch = useDispatch();
+
+function add( ele ){
+  dispatch( addItem(ele) );
+}
+
+function clear(){
+  dispatch( clearCart() );
+}

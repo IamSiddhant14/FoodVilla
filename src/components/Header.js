@@ -4,7 +4,8 @@ import { Link } from 'react-router-dom';
 import useOnline from "../utils/useOnline";
 import { useState , useContext } from "react";
 import UserContext from "../utils/UserContext";
-
+import { useSelector } from 'react-redux';
+import store from "../utils/store"
 
 
 const Title = () => {
@@ -29,8 +30,9 @@ const Header = () => {
 
     const {user
     } = useContext(UserContext)
-    
 
+    const cartItems = useSelector((store) => store.cart.items )
+    
     return (
 
         <div className='flex justify-between bg-gray-200'>
@@ -47,7 +49,7 @@ const Header = () => {
                     <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"> <Link to="/contact">Contact</Link></li>
 
                     <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"
-                    > <Link to="/cart">Cart</Link></li>
+                    > <Link to="/cart">Cart : {cartItems.length}</Link></li>
 
                     <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"> <Link to="/instamart">Instamart</Link></li>
 
@@ -67,8 +69,8 @@ const Header = () => {
                     setToggle('login')
                 }
 
-            }}>{  toggle}</button>
-            {/* }}>{ user.name + toggle}</button> */}
+            // }}>{  toggle}</button>
+            }}>{ user.name + toggle}</button>
 
         </div>
 

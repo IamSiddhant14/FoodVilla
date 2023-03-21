@@ -11,7 +11,7 @@ const Section = ({ title, des }) => {
       
       { isVisible ? <p className="italic" >{des}</p> : <span/>}
       
-      <button className="font-extrabold underline underline-offset-" onClick={() => setIsVisible(!isVisible)}>{isVisible == true ? "Hide" : "Show More" }</button>
+      <button className="font-extrabold underline underline-offset-" onClick={() => setIsVisible(!isVisible)}>{isVisible ? "Hide" : "Show More" }</button>
     </div>
   )
 }

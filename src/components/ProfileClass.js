@@ -28,12 +28,12 @@ class Profile extends React.Component {
         })
         
 
-       this.v = setInterval(() => { // Here" this" keyword is accessible through out the element 
+       this.v = setInterval(() => { // Here this keyword is accessiible through out the element 
             console.log("componentDidMount")
-        })
+        }, 1000 )
     }
 
-    componentDidUpdate(prevProps , prevState ){
+    componentDidUpdate(prevProps , prevState ){ 
 
         if( this.state.count != prevState.count || this.state.count != prevState.count ){
                 
@@ -42,7 +42,7 @@ class Profile extends React.Component {
 
     componentWillUnmount(){
 
-        clearInterval(v);
+        clearInterval(this.v);
 
     }
 
@@ -50,7 +50,9 @@ class Profile extends React.Component {
     render() {
         return (
             <>
-                <UserContext.Consumer>
+
+{/* How to use usecontext in a class component  */}
+                <UserContext.Consumer>  //
                      {({user}) => <h4>{user.name}</h4>}
                 </UserContext.Consumer>
 

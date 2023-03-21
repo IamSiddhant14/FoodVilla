@@ -2,12 +2,14 @@ import { createContext } from "react";
 
 const UserContext = createContext({
 
-        name: 'Siddhant ',
-        email: "siddhantsharma669@gmail.com"
-    
+        user: {
+                name: 'Siddhant ',
+                email: "siddhantsharma669@gmail.com"
+        }
+
 });
 
 
-UserContext.displayName = 'Usercontext';
+UserContext.displayName = 'Usercontext'; // As react dont have name to it , it doesnt track it 
 
 export default UserContext;
