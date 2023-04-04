@@ -1,7 +1,5 @@
-
 import { useParams } from "react-router-dom";
 import { useEffect, useState } from "react";
-import { IMG_CDN_URL } from "./constants";
 import Shimmer from './Shimmer';
 import useRestaurant from "../utils/useRestaurant";
 import { IMG_CDN_URL } from './constants'
@@ -14,14 +12,14 @@ const RestrauntMenu = () => {
   const ans = useParams();
 
   const restaurant = useRestaurant(ans.id);// Here this is coustm made Hook
-
+  
   const dispatch = useDispatch();
 
   function handleAddItem(item){
     dispatch(addItem(item))
   }
 
-  
+  console.log(restaurant)
   // Early return 
   // if (!restaurant) {
   //   return 
@@ -33,7 +31,8 @@ const RestrauntMenu = () => {
       <div className='flex flex-wrap'>
 
 
-          {restaurant[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map((ele) => {
+          {/* {restaurant[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map((ele) => { */}
+          {restaurant[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards.map((ele) => {
            
            return  <div className='h-96 w-60 m-4 rounded-xl bg-slate-200 flex flex-col items-center shadow-lg ' key={ele.card.info.id}>
 

@@ -18,7 +18,7 @@ const cartSlice = createSlice({
             state.items.pop();
         },
 
-        clearCart : (state , action ) =>{
+        clearCart(state , action ){
             state.items = []
         }
     }

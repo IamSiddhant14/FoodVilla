@@ -8,7 +8,8 @@ class Profile extends React.Component {
         super(props);
 
        //Create State
-        this.state={
+
+        this.state = {
             userInfo:{
                 name: "Dummy data",
                 location : "Dummy Location "
@@ -48,27 +49,28 @@ class Profile extends React.Component {
 
     
     render() {
+        
         return (
             <>
 
 {/* How to use usecontext in a class component  */}
-                <UserContext.Consumer>  //
-                     {({user}) => <h4>{user.name}</h4>}
-                </UserContext.Consumer>
+                {/* <UserContext.Consumer>  //
+                     {(user) => <h4>{user.name}</h4>}
+                </UserContext.Consumer> */}
 
                 <h1>This is the profile page made using Profile Class Component </h1>
 
-                {/* <h2> name : {this.props.name} </h2>
+                <h2> name : {this.props.name} </h2>
                 <h2> name2 : {this.state.name2} </h2>
-                <h2> name2 : {this.state.name3} </h2> */}
-                {/* <button 
+                <h2> name2 : {this.state.name3} </h2> *
+                <button 
                     onClick={() => {
                     this.setState({
                         name:3,
                         name2: 4
                     })
 
-                }}>this.setState({})</button>   */}
+                }}>this.setState({})</button>   
 
                 <img src={this.state.userInfo.avatar_url} />
                 <h2>Name : {this.state.userInfo.name }</h2>

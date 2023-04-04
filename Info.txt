@@ -16,6 +16,7 @@ content delivery network , Inc uptime , speed , secuity from d-doc attack and re
 
  What is crossorigin in script tag?
  Very Helpfull in this morden world which is based on loosely coupled microservice architure 
+ preflight options call -> ( Addtional http header ) access control allow origin -> actuale call 
  https://www.youtube.com/watch?v=tcLW5d0KAYE&ab_channel=AkshaySaini
 
 Diffrence bw react and reactDOM ?
@@ -28,8 +29,10 @@ What is async and defer?
   async : This refers to fetching(dowloading) the script encountered while prasing
   defer : This refers to executing the fetched script 
   https://www.youtube.com/watch?v=IrHmpdORLu8&t=246s&ab_channel=AkshaySaini
+ 
+* To use react inside anything put it in the root element :
 
-* To use react inside anything me it the root element :
+import CDN first 
 
 const h = React.createElement("h1" , {id: "abc" , class : 'classy'} , "hello world")
 
@@ -38,11 +41,13 @@ const root = ReactDOM.createRoot(document.getElementById('root));
 root.render('h');
 
 // In html the function inside onClick is been called like this while in react it is diffrent- 
+
 * <button onClick="abc()"></button>
 function abc(){
   console.log("Hello");
 }
-* <button onClick="abc"></button>
+* <button onClick={() => abc()}></button>
+
 function abc(){
   console.log("Hello");
 }
@@ -58,8 +63,6 @@ function abc(){
 
         <h1>Hello World</h1>
    
-        
-
 
 Bundlers : vite , parcel , webpacks
 
@@ -128,13 +131,10 @@ npx parcel index.html --https : for https server
 
 ///////////////////////////////
 
-
-
 ////////////////////////////////
 
 .parcel-cache means space reserved by parcel for its use
 dist folder keeps a faster devlopment build for our project
-
 
 Anything which we could re-genrate is been put on git-ignore
 
@@ -183,9 +183,11 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * Babel(A transpiler/compiler) convert JSX to react.createElement , which is the converted into an Object which is then react convert it to html to load it on the Dom
 
+* npx means we gone use it only once .
+
 * <React.Fragment></React.Fragment> OR <></> is a react component provided by React
 
-* When multiple lines are present then after return in a functional component we need to wrap every thing in ( ) as there exist multiple lines in it 
+* When multiple lines are present then after return in a functional component we need to wrap every thing in return ( ) as there exist multiple lines in it 
 
 * static , relative , absloute , fixed , sticky .
 
@@ -200,6 +202,34 @@ transition : background 3sec red
 
 * Optional chaining : ?.
 
+*  useEffect(() => {
+
+     getRestaurantInfo();
+
+     ///// OR /////
+
+     const fetchProduct = async () => {
+        
+       const data = await fetch(FETCH_MENU_URL + resId + "&submitAction=ENTER");
+       const json = await data.json();
+      
+       setRestaurant(json.data.cards);
+
+     }
+
+     fetchProduct ();
+     
+    }, [] );
+
+    async function getRestaurantInfo(){
+
+       const data = await fetch(FETCH_MENU_URL + resId + "&submitAction=ENTER");
+       const json = await data.json();
+      
+       setRestaurant(json.data.cards);
+       
+    }
+   
 * Component inside another component is called component composition
 
 * There is a jsx element and a jsx component where element is nothing but a const head = ( <h1> Hello </h1>) and component is a functional or a class componet 
@@ -233,7 +263,7 @@ import {Title} from './dcsdc';
 
 * import Header , {Title} from './components/Header'; Here header is default one while Title is normal one
 
-*  import { Title , Header } from './components/Header'; Here Both of them are normale one
+* import { Title , Header } from './components/Header'; Here Both of them are normale one
 
 * onClick={() => filtreData()}
 Here this function is only been called when it is been clicked and not when the js engine skims through the entire program 
@@ -242,7 +272,7 @@ Here this function is only been called when it is been clicked and not when the 
  
 obj.header
 
-* In default export Renaming is possible
+* In default export Renaming is possible  
 * BUt not possible in normale one  
 
 * We put All the static details in the config file/constant file
@@ -266,6 +296,7 @@ obj.header
   ALSO 
 
    res.data.name.includes("abcss"); Here no explicit return keyword needed as "includes" return a boolean only but apart from this a return keyword is nessaccary 
+
 })
 
 * When we need to mantain a variable that changes then in that case we need to make it a react variable that is a useState variable
@@ -277,7 +308,7 @@ obj.header
 * what/why is React Hook ?
 It is nothing but just a javascript function given to us by react which provid us some functionality
 
-* Microservice arciture results in sepration of concer , all project are deployed on diffrent port but on the ame domain name , some companey have diffrent domain as well
+* Microservice arciture results in sepration of concern , all project are deployed on diffrent port but on the same domain name , some companey have diffrent domain as well
 
 * page loads -> call API -> Fill the data ( render the page)
 
@@ -310,7 +341,7 @@ It is nothing but just a javascript function given to us by react which provid u
 
  * Shimmer UI is the morden day UI;
 
- * return (!restaurant) ? (<Shimmer/>) : ( <h1>"Hello"</h1>)
+ * return (!restaurant) ? (<Shimmer/>) : ( <h1>"Hello"</h1>) ;
 
  * { Here in this curly bracket we could only write expression and not a statement( which already have a value like let a = 10 is not possible) , a expression is one which boils down to numeric value }
 
@@ -451,7 +482,7 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
 * If one function is present inside one single file then in that case we will use default export 
 
-* Hook is not but just a function 
+* Hook is nothing but just a function 
 
 * 
         const handleOnline = () => {
@@ -474,11 +505,10 @@ const Instamart = lazy(() => import( "../componet /Instamart")) : this should pr
 
 path: "/instamart",
 element: (
-  <Suspend fallback={<Shimmer />}>
+  <Suspense fallback={<Shimmer />}>
      <Instamart />
-  <Suspend />
+  <Suspense />
 )
-
 
 
 * backgroundColor and not background-color in react 
@@ -498,7 +528,7 @@ Tailwind css( Css framework )
 * EARLY RETURN IS REALLY A VERY POWERFULL THING 
 
 if( !online ){
-  return {<h1> "Offline 🔴"</h1>}
+  return {<h1> "Offline 🔴"</h1>};
 }
 
 * 
@@ -520,7 +550,7 @@ if( !online ){
 
 * Profiler is been used for determining how much time is been used in rendering each component 
 
-* componet in the redux tool of chrome help us in determining are the component architure is presesnt in real life 
+* component in the redux tool of chrome help us in determining are the component architure is presesnt in real life 
 
 * props are for each component while usecontext is central in nature 
 
@@ -564,6 +594,15 @@ if( !online ){
  *
  * 
 
+* Reducer are through function which are made to mutate the state , also they are pure function means through function which do not change data outside the function 
+
+* const initialState = [] ;
+
+{
+  initialState : initialState 
+  Or 
+  initialState 
+}
 
  * Ways we handle data in our react App using the following ways :
 
@@ -705,3 +744,102 @@ function add( ele ){
 function clear(){
   dispatch( clearCart() );
 }
+
+
+
+*Object.freeze({
+   
+   IDLE : 'idle'.
+   Non_Idle: 'no'
+  ? This thing freezes any change in the object
+})
+
+
+* enums ({
+   
+   IDLE : 'idle'.
+   Non_Idle: 'no'
+  ? This thing freezes any change in the object
+})
+
+* ellis { aaa: b , c }
+
+// For thunk reffer codergyan redux toolkit 
+
+* TESTTING 
+
+->  Manual TESTTING
+-> Autmation TESTTING
+   - selenium TESTTING(E2E Testing entire data flow on a headless browser )
+-> Unit Testing( small component feature testing)
+-> Integration Testing ( Testing the integrity bewteen the components )
+->   
+
+
+* we use jest which a javascript framework for testing 
+
+* jest is been used by React Testing Library 
+
+ * - Install React Testing Librabry
+ * - Install Jest
+ * - configure Jest
+ * - Installed jest-environment-jsdom
+ * - Create my first test
+ * - Configure babel
+ * - Wrote expect sum test
+ * - gitignore coverage report
+
+
+1.> npm install --save-dev @testing-library/react
+
+2.> npm i -D jest 
+
+3.> npx jest --init //npx means execute it once only , this commond is been used for configuring jest 
+
+* Test driven devlopment : The test coverage is 100 percentage  upfront in test driven devlopment 
+
+4.> npm i -D jest-environment-jsdom
+
+5.> create first test folder " __tests__ "-> sum.test.js
+
+" __ " : this naming convetion is also know as dunder 
+
+6.> configure bable :  npm install --save-dev babel-jest @babel/core @babel/preset-env
+
+JSON != javascript object
+
+7.> Make a .bablerc file :  presets: [['@babel/preset-env', {targets: {node: 'current'}}]]
+
+8.> npm run jest : to start testing 
+
+
+
+
+
+
+
+
+
+
+// Machine Coding :- 
+
+* Planning the application  and time managemnt is very important in machine coding round of interveiw 
+
+* Requirment qualifiation
+  - Features  ( 5min )
+  - Tech-Stack( Justification ) ( 5 min )
+      - redux
+      - Tailwind
+      - formik
+      - routing
+      - Bundler
+      - Testing libary
+      - Language
+  - Planning          (5 min )
+    - UI design or low level design
+    - figure out pages
+    - List down the components
+  - 
+
+
+ 

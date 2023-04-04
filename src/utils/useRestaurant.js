@@ -10,7 +10,19 @@ const useRestaurant = (resId) => {
 
 
     useEffect(() => {
+
      getRestaurantInfo();
+
+    //  const fetch = async () => {
+        
+    //    const data = await fetch(FETCH_MENU_URL + resId + "&submitAction=ENTER");
+    //    const json = await data.json();
+      
+    //    setRestaurant(json.data.cards);
+
+    //  }
+
+    //  getRestaurantInfo();
      
     }, [] );
 

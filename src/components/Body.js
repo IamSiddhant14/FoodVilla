@@ -10,9 +10,6 @@ import { useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 
 
-
-
-
 const Body = () => {
 
     // Here searchText is local state variable
@@ -40,7 +37,7 @@ const Body = () => {
 
         const data = await fetch(
             "https://www.swiggy.com/dapi/restaurants/list/v5?lat=23.1603516&lng=77.45585539999999&page_type=DESKTOP_WEB_LISTING"
-
+            
         );
 
         const json = await data.json();
@@ -57,7 +54,6 @@ const Body = () => {
         // setAllRestaurants(json?.data?.cards[0]?.data?.data?.cards);
         // setFilteredRestaurants(json?.data?.cards[0]?.data?.data?.cards);
     }
-
 
     const isOnline = useOnline();
 
