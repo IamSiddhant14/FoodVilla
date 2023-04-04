@@ -16,13 +16,13 @@ import Cart from './components/Cart';
 import UserContext from './utils/UserContext';
 import { Provider } from "react-redux";
 import store from "./utils/store";
+
 /*
 Header
 
   - Logo
   - Nav Items(Right side)
   - Cart
-
 
 Body
 
@@ -34,17 +34,14 @@ Body
       -Rating
       -Desp/Cusines
 
-
 Footer
 
   - Links
   - Copyright
 
-
 */
 
 const Instamart = lazy(() => import("./components/Instamart")) // Lazyloading / chuking / dynamic import  taking place 
-
 
 // Nested Children 
 const AppLayout = () => {
@@ -74,6 +71,7 @@ const AppLayout = () => {
         <Footer />
 
       </UserContext.Provider>
+
       </Provider>
     </React.Fragment>
     
@@ -87,7 +85,6 @@ const appRouter = createBrowserRouter([
     element: <AppLayout />,
     errorElement: <Error />,
     // Any error in this path ("/") will result in error component rendering 
-
     children: [
       {
         path: "/about",
@@ -125,7 +122,6 @@ const appRouter = createBrowserRouter([
   }
 
 ])
-
 
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
