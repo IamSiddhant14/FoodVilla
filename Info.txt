@@ -11,7 +11,7 @@ What is CDN? Why do we use it?
 content delivery network , Inc uptime , speed , secuity from d-doc attack and reduces the time
 
  Why is React known as React? 
- react : Because it reacts to state change in virtul dom which evantually changes the real DOM changed entity only
+ react : Because it reacts to state change in virtul dom( A Javascript object which represent an DOM ) which evantually changes the real DOM changed entity only
  https://www.youtube.com/watch?v=N3AkSS5hXMA&ab_channel=ProgrammingwithMosh
 
  What is crossorigin in script tag?
@@ -46,6 +46,7 @@ root.render('h');
 function abc(){
   console.log("Hello");
 }
+
 * <button onClick={() => abc()}></button>
 
 function abc(){
@@ -217,6 +218,17 @@ transition : background 3sec red
 
      }
 
+    //////// OR ////////
+
+    function fetchProduct(){
+        
+       const data = await fetch(FETCH_MENU_URL + resId + "&submitAction=ENTER");
+       const json = await data.json();
+      
+       setRestaurant(json.data.cards);
+
+     }
+
      fetchProduct ();
      
     }, [] );
@@ -232,7 +244,7 @@ transition : background 3sec red
    
 * Component inside another component is called component composition
 
-* There is a jsx element and a jsx component where element is nothing but a const head = ( <h1> Hello </h1>) and component is a functional or a class componet 
+* There is a jsx element and a jsx component where element is nothing but a const head = ( <h1> Hello </h1>) and component is a functional or a class componet  
 
 * We keep virtual dom with us for Reconciliation in react , That is to detect change bw actual and virtual dom using diff algorithm we also require a key for that as well , Whenever there is any change in prop or state re-render of the entire component take place and updation of the changed part take place as well 
 
@@ -242,7 +254,7 @@ transition : background 3sec red
 
 * Config Driven UI : This method is been used for changing the UI on te bases of the backend UI
 
-* Props means passing Arguments to functional component < comp a={"dad"} />  
+* Props means passing Arguments to functional component < comp a="dad" b={comment}/>  
 
 * Key is not a "Props"
 
@@ -277,8 +289,7 @@ obj.header
 
 * We put All the static details in the config file/constant file
 
-
-* To make <input value={} onChange={(e) => changeFunc(e.target.value) }/> tag work in react it is compulsory to have an onChange prop in the tag as we need to keep a track of the changing state variable and change its value use setstate function provided by the usestate  , when we change any regular variable value in onChange the although the value get changed but it woulnt reflect on the UI as no re-render is taking place 
+* To make <input value={} onChange={(e) => changeFunc(e.target.value)} /> tag work in react it is compulsory to have an onChange prop in the tag as we need to keep a track of the changing state variable and change its value use setstate function provided by the usestate  , when we change any regular variable value in onChange the although the value get changed but it woulnt reflect on the UI as no re-render is taking place 
 
 * Props name should be same through out the sending and reciving process
 
@@ -745,7 +756,22 @@ function clear(){
   dispatch( clearCart() );
 }
 
+A higher order componenet is a componenet which takes in a existing componenet and return another componenet with some modification of the old component
 
+const redBorderedCard = (VideoCard) => {
+
+  return <div className="h-4 font-weight:30px ">
+        <VideoCard/>
+  </div>
+
+}
+
+
+
+useSearchParams() : It is used to find a particular attribute in an entire link 
+
+const [ searchParams ] = useSearchParams();
+console.log( searchParams.get(v));
 
 *Object.freeze({
    

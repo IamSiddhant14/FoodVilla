@@ -2,7 +2,7 @@
   "name": "l-4",
   "version": "1.0.0",
   "description": "Food Villa",
-  "main": "index.js",
+ 
   "scripts": {
     "test": "jest",
     "start": "parcel index.html",
@@ -30,5 +30,8 @@
     "react-dom": "^18.2.0",
     "react-redux": "^8.0.5",
     "react-router-dom": "^6.8.2"
-  }
+  },
+  "browserslist": [
+    "last 10 versions"
+  ]
 }

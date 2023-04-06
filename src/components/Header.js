@@ -1,19 +1,15 @@
-import { IMG_TITLE } from "./constants"
 import img from '../assets/foodvilla.png';
-import { Link } from 'react-router-dom';
+import { Link } from "react-router-dom"
 import useOnline from "../utils/useOnline";
 import { useState , useContext } from "react";
 import UserContext from "../utils/UserContext";
 import { useSelector } from 'react-redux';
-import store from "../utils/store"
-
 
 const Title = () => {
     return (
-        <a href="/">
-
-            <img className="h-28 m-2 rounded-full bg-slate-200  " alt="logo" src={img} />
-        </a>
+        <Link  to="/">
+            <img className="h-28 m-2  rounded-full bg-slate-200  " alt="logo" src={img} />
+        </Link>
     )
 }
 
@@ -36,6 +32,7 @@ const Header = () => {
     return (
 
         <div className='flex justify-between bg-gray-200'>
+
             <Title  />
 
             <div className='flex flex-col items-center'>
@@ -46,12 +43,11 @@ const Header = () => {
 
                     <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"><Link to="/about">About</Link></li>
 
-                    <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"> <Link to="/contact">Contact</Link></li>
 
                     <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"
-                    > <Link to="/cart">Cart : {cartItems.length}</Link></li>
+                    > <Link to="/cart">🛒{cartItems.length}</Link></li>
 
-                    <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"> <Link to="/instamart">Instamart</Link></li>
+                    <li className="ml-10 py-6 hover:scale-150 ease-out duration-500 hover:font-semibold hover:uppercase"> <Link to="/instamart">Mart</Link></li>
 
 
                 </ul>
@@ -70,7 +66,7 @@ const Header = () => {
                 }
 
             // }}>{  toggle}</button>
-            }}>{ user.name + toggle}</button>
+            }}>{toggle}</button>
 
         </div>
 
