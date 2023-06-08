@@ -3,7 +3,6 @@ import { IMG_CDN_URL } from "./constants";
 
 const RestaurantCard = (props) => {
 
-
     // const RestaurantCard = ({ name , star , cus }) => {
 
     // const RestaurantCard = ({ a , b, c, d }) => // Here a , b, c, d should be of the exact same name as of the keys 

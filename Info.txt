@@ -14,12 +14,12 @@ content delivery network , Inc uptime , speed , secuity from d-doc attack and re
  react : Because it reacts to state change in virtul dom( A Javascript object which represent an DOM ) which evantually changes the real DOM changed entity only
  https://www.youtube.com/watch?v=N3AkSS5hXMA&ab_channel=ProgrammingwithMosh
 
- What is crossorigin in script tag?
+ What is crossorigin in script tag?  
  Very Helpfull in this morden world which is based on loosely coupled microservice architure 
  preflight options call -> ( Addtional http header ) access control allow origin -> actuale call 
  https://www.youtube.com/watch?v=tcLW5d0KAYE&ab_channel=AkshaySaini
 
-Diffrence bw react and reactDOM ?
+Diffrence bw react and reactDOM ? 
 React is the core libary , while ReactDOM is the libary injected for the webversion of the React which give us the access to the DOM .
 
  What is difference between react.development.js and react.production.js files via CDN
@@ -34,20 +34,20 @@ What is async and defer?
 
 import CDN first 
 
-const h = React.createElement("h1" , {id: "abc" , class : 'classy'} , "hello world")
+const h = React.createElement("h1" , {id: "abc" , class : 'classy'} , "hello world");
 
-const root = ReactDOM.createRoot(document.getElementById('root));
-
+const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render('h');
 
 // In html the function inside onClick is been called like this while in react it is diffrent- 
 
 * <button onClick="abc()"></button>
-function abc(){
+function abc(){ 
   console.log("Hello");
 }
 
 * <button onClick={() => abc()}></button>
+* <Input onChange={abc} />
 
 function abc(){
   console.log("Hello");
@@ -63,11 +63,10 @@ function abc(){
         <h1> Not Rendered </h1>
 
         <h1>Hello World</h1>
-   
 
-Bundlers : vite , parcel , webpacks
+Popular Bundlers : vite , parcel , webpacks
 
-A bundler do the folowing things :
+A bundler performs the following operations :
 
 * HMR : Hot Module Replacement , means auto reload on any change
 
@@ -95,9 +94,11 @@ A bundler do the folowing things :
 
 * Tree shaking( Removes the deadcode From the App)
 
-* Port number is also managed by parcel
+* Port number is also managed by parcel 
 
 * Browser compatibility is also dine by it 
+
+We could build the react application either with the help of create react app or we could also use configure everything from strach this is really used when we are building a larger application and need many type of configration
 
 Parcel dont do every thing it self instead it also takes the help of other NPM package 
 
@@ -113,6 +114,7 @@ package-lock.json keeps a exact track of the current package version while the p
 Never put package-lock.json into git-ignore or else you will go into the error og it is working in my system but not on the production ,
 maintain the hash as well 
 
+<src script='./dist/index.js' type="module"> </src>
 
 (STEP-2 ): npm install -D parcel : This is a dev depencie
 npm i -D parcel : This is a dev depencie
@@ -139,7 +141,7 @@ dist folder keeps a faster devlopment build for our project
 
 Anything which we could re-genrate is been put on git-ignore
 
-browserlist ensure that our app works on the respective version as mentioned
+browserlist ensure that our app works on the respective version as mentioned  
 
 * git init to initalize a git repository
 
@@ -160,7 +162,7 @@ browserlist ensure that our app works on the respective version as mentioned
 * We also need to configure this which could be find in the npm page only how to do this ,
  That is make a file using .babelrc and then copy as it is on NPM website
 
-* Each React element should always have a key in it
+* Each React element should always have a key in it 
 
 * React use the help of  diffe algorithm to keep a track of the Keys
 
@@ -184,6 +186,8 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * Babel(A transpiler/compiler) convert JSX to react.createElement , which is the converted into an Object which is then react convert it to html to load it on the Dom
 
+* whenever putting in an object state in a state function we will always put in an object inside that another object will be ther 
+
 * npx means we gone use it only once .
 
 * <React.Fragment></React.Fragment> OR <></> is a react component provided by React
@@ -198,6 +202,7 @@ transition : background 3sec red
 
 *style="background-color:powderblue;"
  style={{backgroundColor: 'powderblue '}}
+
 
 * Big websites uses config driven UI
 
@@ -220,7 +225,7 @@ transition : background 3sec red
 
     //////// OR ////////
 
-    function fetchProduct(){
+async  function fetchProduct(){
         
        const data = await fetch(FETCH_MENU_URL + resId + "&submitAction=ENTER");
        const json = await data.json();
@@ -250,11 +255,13 @@ transition : background 3sec red
 
 * We could not provide styling to a React Fragment
 
+* Never change the value of state variable using the setState function directly in the code itself , but instaed  change it inside the useEffect or a in onChange 
+
 * [burger , pizza ].join(" , ") =>  burger, pizza 
 
 * Config Driven UI : This method is been used for changing the UI on te bases of the backend UI
 
-* Props means passing Arguments to functional component < comp a="dad" b={comment}/>  
+* Props means passing Arguments to functional component < comp a="dad" b={comment} />  
 
 * Key is not a "Props"
 
@@ -265,11 +272,16 @@ transition : background 3sec red
 import Header from './dcsdc';
 
 * export const Title = () => { // Named import 
+
 }
+
+
 
 * In order to maintain a variable in react which changes itself we use a react variable(State varible ) as it value is been tracked by React unlike a normal variable 
 
-import {Title} from './dcsdc';
+import {Title} from './dcsdc'; here the name should be same as that of the exported name as here destructing is beeen used which require it to be of the same name as if we need to rename it we could do it by the given code below 
+
+import { Title as  tit } from './dcsdc' ;
 
 (STEP-5 ): Create a folder called src and inside that create a folder component then make all the components inside that only , inside the source folder we will also keep our constant and app.js file as well
 
@@ -291,9 +303,9 @@ obj.header
 
 * To make <input value={} onChange={(e) => changeFunc(e.target.value)} /> tag work in react it is compulsory to have an onChange prop in the tag as we need to keep a track of the changing state variable and change its value use setstate function provided by the usestate  , when we change any regular variable value in onChange the although the value get changed but it woulnt reflect on the UI as no re-render is taking place 
 
-* Props name should be same through out the sending and reciving process
+* Props name should be same through out the sending and reciving process  
 
-* (STEP-6 ): Make the router using the libary react-router-dom 
+* (STEP-6 ): Make the router using the libary react-router-dom   
 
 * When we write any thing in the search bar(Input Tag) react rerenders the whole componenet this changes need to get refected in the search bar for that we take the help og useState and onChange method
 
@@ -314,7 +326,6 @@ obj.header
 
 * what/why is state ?
  When we change a state variable then in that case react would know that the value has changed has thus it need to re-render the changes in that component to refelect the change in the DOM  , while when we change a normale variable no state change takes place hence no re-render is there which result no change 
-
 
 * what/why is React Hook ?
 It is nothing but just a javascript function given to us by react which provid us some functionality
@@ -360,13 +371,19 @@ It is nothing but just a javascript function given to us by react which provid u
 
  * We never change the value of a state variable directly but with the help of the set function as it tell react to run the reconsiliation process
 
+* Agar context ka use kar k pure Aap mai data change kar ho simenteously then we will export a setUser function of a state variable 
+
  * Class Component: 
   constructor(){
-  super()
+  super();
 
  this.state ={
+
+  val :{
   a: 2 ,
   b:3 
+  }
+
  }
   
 }
@@ -397,7 +414,7 @@ OR
 
 * 
 
-* Reconciliation happen in two face in face one constructor and render method is been called this fase is called the render face and in the face two componentDidMount is called this is called the commit face also one initial render takes place before commit face where shimmer / some components is been loaded and in face two updation of the DOM take place  
+* Reconciliation happen in two phases in phases one constructor and render method is been called this phases is called the render phases and in the phases two componentDidMount is called this is called the commit phases also one initial render takes place before commit face where shimmer / some components is been loaded and in phases two updation of the DOM take place  
 
  * We create hooks after functional component and before return . Thats is bewteen them 
 
@@ -412,8 +429,7 @@ OR
 const err = useRouteError() ;
 consle.log( err.status + " : " + err.statusText)
 
-* client side routing means we are not getting anything from the server instead we have all of it we are just loading it   
-
+* client side routing means we are not getting anything from the server instead we have all of it we are just loading it   , ssg , csg , ssr 
 
 * Object.values converts list of object to a array of object
           {Object.values(restaurant?.menu?.items).map((item) => (
@@ -426,13 +442,18 @@ consle.log( err.status + " : " + err.statusText)
                 </div>
             ))
 
-* consitional rendering is very important when we are not getting notdefined or null , like : 
+* consitional rendering is very important when we are not getting notdefined or null , like that is the the use of ternary operator , and not opintion chaining : 
 
 return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
-* formik help us to create form in react
+* { isVerified && <div>hello</div>}
+  This is a great mehtod when no value is required unlike the other two options 
 
-* 
+  const a = { isVerified ? <div>hello</div> : <div>hi</div>}
+
+  const b = { isVerified ? <div>hi</div> : null };
+
+* formik help us to create form in react
 
 * Modular , resuable , scalble , maintable , testable , clearnerf
 
@@ -543,6 +564,8 @@ if( !online ){
 }
 
 * 
+
+* Tailwind is build on mobile first approch that is in tailwind we need to write the code for medium and big screen diffrently 
 
 * className="w-96"
 * className=" w-[200px]" This is a dynamic parameter and called square bracket notation 
@@ -744,7 +767,7 @@ import { useDispatch } from 'react-redux' ;
 import { clearCart } from '../utils/cartSlice';
 import { addItem } from '../utils/cartSlice';
 
-const cartItem = useSelector((store)=> store.cart.items )
+const cartItem = useSelector((store)=> store.cart.items );
 
 const dispatch = useDispatch();
 
@@ -756,7 +779,7 @@ function clear(){
   dispatch( clearCart() );
 }
 
-A higher order componenet is a componenet which takes in a existing componenet and return another componenet with some modification of the old component
+A higher order componenet is a function which takes in a existing componenet and return another componenet with some modification of the old component
 
 const redBorderedCard = (VideoCard) => {
 
@@ -791,6 +814,310 @@ console.log( searchParams.get(v));
 * ellis { aaa: b , c }
 
 // For thunk reffer codergyan redux toolkit 
+
+
+We have javascript html and css still why we need framework like react ?the reason behind it is when the number of request on the backend increses then it that case it became very difficult to get every page on every single request on server that is returning the html css and js file on every single request although may code in that meight be similar still it is been requested every single time 
+
+A single page application appers to be multiple page but the thing is only the conet which is need to be change is been chaged on switch the pages which case is not true when the website is a multpage application 
+
+React , angular and vue gives us a ingle page application we write our code it int and build it in return we get static files which could be deployed on the server such that on every request only the nessasry content is been changed unlike an multipage application 
+
+React can be used to build both Single Page Application and also Part of Multi Page Application
+
+
+Javascript obfuscator is been used to make javascript un understanable
+build it in react and other frontend end frame work as well 
+
+
+UI libary to build component 
+
+Entry point is always the index.js file in npx create-react-app 
+
+To write html inside of a react componet we write it in jsx , jsx is similar to html such that we can also write javascript along with it , in order to write javascript inside of it we write it inside of 
+a " {} " tag .
+
+
+------ 
+
+const a = 10;
+const c = 'hello;
+function b(){
+  return 'hi from hello';
+}
+
+export { a , c , b } ;
+
+import { a , c , b } from './abcd/gv.js';
+import { a , c , b as bc  } from './abcd/gv.js';
+
+------- 
+
+
+when we have jsx return inside of a file then we need to import react in that file as well as jsx ultimetly gets convert into it natural form which is been mentioned below :
+
+import React from 'react' ;
+
+                👇This is jsx
+ReactDom.render(<h1>Hello</h1> , document.getElementById('root'));   👇This is convertto below one 
+              👇
+React.createElement("h1" , null , 'hi i am h1");
+React.createElement("h1" , {className  : "header" } , 'hi i am h1");
+React.createElement("h1" , {className  : "header" , id : 'rgb' } , 'hi i am h1");
+
+
+Or in vi\anilla js 
+
+const h  = document.createElement("h1");
+h.innerHTML = 'hello from h1' ;
+
+const r = document.getElementById('root');
+r.appendChild(h);
+
+
+
+*  we cannot use conditional statement ( if else ) in hooks nor in jsx instead we use ternary operator instead also for loop as well instead we use map and filtre 
+
+* Object.keys(ele) : Return us an array of keys in that object
+
+* {a = val ? 'hi' : 'hello '}
+
+* {a}{isPresent ? 'hi : 'hello' } // This is possible two { } in one line 
+
+* Ui per change nahi hota hai although value chage ho jae : Play != Play
+
+* Props are read only in nature that is we can modifie it statically ( color = 'pink' ) but not dynamically ( whith the help of onclick )
+
+* <div className="veiw">
+                                       This is possible in jsx
+    {veiws} Veiws <span>.</span> {time}
+  </div>
+
+* 
+
+
+const obj = {
+  name : 'sidd' , 
+  val : '45' ,
+  age: 89
+}
+
+<video name="siddhant" val="54" age={45} />
+        OR 
+<video {...obj}  />
+
+const video = ({ name , val , age }) => {
+  
+  return (
+      <div>{name}</div>
+      <div>{val}</div>
+      <div>{age}</div>
+  )
+
+};
+
+
+* This is used to install exact version of depencies :  npm install --legacy-peer-deps 
+
+__
+
+* we can aslo pass Component as props :
+
+App.js :-
+
+import Styling from ',.Styling';
+import Vid from './Vid' ;
+
+const App = () => {
+
+  return (
+    ✅  <Styling comp={Vid} />
+    ❌  <Styling comp={<Vid/>} /> as here Vid is been passed as an object and we want it is as string 
+  )
+}
+
+export default App ;
+
+
+
+Styling.js :-
+
+const Styling = ({Comp}) => {
+
+  return (
+    <div className="1px solid red" >
+       <Comp />
+    </div>
+  )
+}
+
+
+* src folder cannot access file outside of it self 
+
+* Rember of children Prop 
+
+* Any Event which is been attached on an element which is create by us , does not do any onClick or onChange property as it only work on traditonal html element and not on the creted react componenet 
+
+* e.stopPropogation() - anti bubbling ,
+  e.preventDefault() - anti default Event ,
+  , {
+    capture : true 
+  }
+
+* <video>  </video> === <video/>
+
+
+* const [ number , setNumber ] = useState(0);
+
+
+function handleClick(){
+ 
+  //They are been executed async
+ setNumber(number+1)
+ setNumber(number+1)
+ setNumber(number+1)
+ setNumber(number+1)
+
+ console.log(number);
+
+
+ out : 
+ 1
+ 1
+ 1
+ 1
+
+ 0
+
+}
+
+
+function handleClick(){
+
+ //They are been executed async
+ setNumber(number = number+1)
+ setNumber(number = number+1)
+ setNumber(number = number+1)
+ setNumber(number = number+1)
+
+ console.log(number);
+
+ out : 
+ 1
+ 2
+ 3
+ 4
+
+ 0
+
+}
+ 
+<button onClick={handleClick} >{number}</button>
+
+
+
+while mutating the original array we should not modife the original one instead create a new one always  
+const [ video , setVideo ] = useState(video);
+setVideo([ ...videos , {
+  a : 'sidd' ,
+  b : '45'
+}])
+
+OR
+
+const a  = video.map((vid) => {
+   
+   if(vid.id == i ){
+    return {
+      vid.id : newId
+    }
+   }
+}
+)
+
+setVideo(a);
+
+
+* "create-react-app" is a toolchain which help us in installing all things easily and creating a react app easily 
+
+* pwd : present workind directory 
+
+* npm is a package manager while npx is used to execute other javascript packages 
+
+*
+
+let obj = {
+
+  title : 'Reactjs' ,
+  co : 'black' ,
+  channel : 'CoderGyan',
+  views : 400 ,
+  time :'20 min' ,
+
+}
+
+function App() {
+  return (
+    <div className="App">
+   
+       <Video title='Reatjs' co='black' channel='Codergyan' views={400} time='20 min'  ></Video>
+
+       <Video title={obj.title} co={obj.co} channel={obj.channel} views={obj.views} time={obj.time} ></Video>
+   
+       <Video {...obj} ></Video>
+       
+    </div>
+  );
+}
+
+
+
+export default App;
+
+
+
+const Video = ({title , co , channel , views ,time }) => {
+
+    const topic = 'no value here'
+
+  return (
+    <div >
+
+      <img src="https://shorturl.at/BJKRS" />
+      
+      <div style={{ marginTop : '10px' , color:co }}>This is the title {title} </div>
+
+      <div>{channel}</div>
+      <div>{views} views <span>.</span>{time}</div>
+
+    </div>
+  )
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 * TESTTING 
 
@@ -843,10 +1170,6 @@ JSON != javascript object
 
 
 
-
-
-
-
 // Machine Coding :- 
 
 * Planning the application  and time managemnt is very important in machine coding round of interveiw 
@@ -868,4 +1191,172 @@ JSON != javascript object
   - 
 
 
+ Step 1 : Requirment gathering
+
+ Tech stack - 
+
+  Data layer :
+   context api , 
+   redux toolkit,
+   formik
+
+  UI layer :
+   Tailwind css
+
+  Router :
+   react router dom
+
+  Bundler :
+   parcel
+
+  Testing :
+   jest
+
+
+Step 2 : Layout design 
+
+Step 3 : pages design
+
+Step 4 : componenet determination
+
+Step 5 : npx create-react-app yt
+
+Step 6 : Inside src create a component folder inside that folder create the various components
+
+Step 7 : npm install react-router-dom , Enable routing in App.js
+
+step 8 : we render everything in the App.js  which is been render in the index.js
+
+Step 9 : npm i -D Tailwind , configure tailwind
+
+Step 10 : while using the local image in react we have to ways to do it (weback)
+
+
+Below statement is possible :
+
+const [count, setCount] = useState(0)
+<button onClick={() => setCount((count) => count + 1)}>
+<button onClick={() => setCount((prev) => prev + 1)}>
+  
+  - <img src={require('../assests/ig.png')} />
+  - import ig from '../assests/ig.png';
+    <img src={ig} />
+step 10 : element is element
+
+step 11 : we need to import the index.css file in index.js in order to tailwind to work 
+
+Step 12 : grid grid-flow-col | col-span-2
+
+Step 13 : step up redux by installing 
+npm i react-redux @redux/toolkit 
+
+step 14 : Now step up the store 
+
+step 15 : we can also early return by doing if( a === false ){return null}
+   
+step 16 : We do not export our api key
+
+step 17 : const [ searchParam ] = useSearchParam();
+          const attr = searchParam.get('v');
+          console.log(attr);
+
+
+
+Challeges assoicated with live data : 
  
+ - Data layer : Fetching live data
+ - UI layer : Rendering live data 
+
+ To fetch the data we can use two things
+ - Websocket ( no regular intervel , involve a handshake , bi directional  )
+ - Api polling / long polling ( doesnt invlove a handshake , fixed interval , one way )
+
+
+Usememo Hook is been used to memoize the heavy operation while caching 
+
+const[ isDarkTheme , setisDarkTheme ] = useState(true);
+
+const[ isOpen , setIsOpen ] = useState(true);
+
+<div  className={ "bg-slate-900" + ( isOpen && "text-bold") + "underline" }  >
+    
+</div>
+
+Here the value returned by prime is be stored and not been calculated on every rerender(change of the prop and state) this value is only calculated when the value of text changes
+
+Before
+const primeVal = prime();
+
+After
+const prime = Usememo(() => prime() , [text]) ;
+Here it caches the result in the prime variable
+
+
+UseCallBack - here we cache the function defination unlike Usememo where we cache the result of function 
+
+
+* Most of the time props are read only in nature that is it couldnt be changed dynamically
+although assigment to a new variable ould be performed some time 
+
+* when we pass an component inside another component then we could access it inside the other component with the help of children component
+
+<video><AnotheComp/></video>
+
+function video({AnotherComp , age='42" //Default Prop }){
+   
+   return (
+    <div>
+       <Children/>
+    </div>
+   )
+}
+
+<Video  age={'54'}></Video> ❌
+<Video  age={54}  ></Video> ✅
+
+* spread vs destructing
+ const arr = [ 1 , 3, 4, 5 ,6 , 8, 9 ];
+
+ const [ 1 , 2,  3, 4 ] = arr ;
+ [] : create an array , spread all the elelment present in arr using ...arr add 10 to that arr ;
+ const b = [...arr , 10 ]
+
+const f = [ 1 , 3, 4, 5, 6,7 ];
+const g = [...f];
+console.log( ...f , g  );
+
+1 3 4 5 6 7 ,  [1, 3, 4, 5, 6, 7]
+
+making a copy 
+{ ...vid }
+
+editing and making a copy 
+{ ...vid , id : 'hi'}
+
+making a copy 
+[ ...list ]
+
+editing and making a copy 
+[ ..list , ['hi']]
+
+ let obj = {
+    time: '1 month ago',
+    channel: 'Coder Dost',
+    verified: true,
+  }
+
+  let ar = [ 1 , 2, 3, 4,4]
+
+// This below one will always give error 
+ console.log(...obj)
+console.log({...obj})
+console.log(...ar)
+console.log([...ar])
+
+
+json mai key and value should both be in "" 
+
+while in object mai key hona chaiyeah but not compulsary 
+
+we can edit in the middle of the the array with thehelpof dplice and .findIndex
+

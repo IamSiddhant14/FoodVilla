@@ -1,5 +1,3 @@
-import { restrautList } from "./constants";
-import { IMG_CDN_URL } from "./constants";
 import Shimmer from "./Shimmer";
 import { Link } from 'react-router-dom'
 // import { filterData } from '../utils/helper'
@@ -25,7 +23,6 @@ const Body = () => {
     const [clicked, setClicked] = useState('Search');
 
     const { user, setUser } = useContext(UserContext);
-
 
 
     useEffect(() => {
@@ -84,7 +81,6 @@ const Body = () => {
 
     <>
 
-
             <div className="p-5 bg-gray-300 m-4 rounded ">
 
                 <input type="text" className=" shadow-lg rounded-lg bg-white p-2 focus:outline-none" placeholder="  Search" value={searchInput}
@@ -104,7 +100,6 @@ const Body = () => {
                         setTimeout(() => {
                             setClicked('Search');
                             setSearchInput("");
-
 
                         }, 3000)
 
@@ -130,28 +125,18 @@ const Body = () => {
                 {
                     filteredRestaurants.length === 0 ? <h1>No Restaurant Match Your Search<Shimmer/></h1> :
 
-
-
-
-
                         filteredRestaurants.map((restaurant) => {
 
                             return <Link to={"/restaurant/" + restaurant.data.id} key={restaurant.data.id}>
 
-                                <RestaurantCard name={restaurant.data.name} star={restaurant.data.avgRating}
-                                    cus={restaurant.data.cuisines}
-                                    img={restaurant.data.cloudinaryImageId}
-                                    cost={restaurant.data.costForTwoString}
-                                    maxDeliveryTime={restaurant.data.slaString}
+                                <RestaurantCard {...restaurant.data} /> 
 
-                                />
+                                
                             </Link>
 
 
                             // return <RestaurantCard {...restaurant.data}
                             // />
-
-
                         })
                 }
 

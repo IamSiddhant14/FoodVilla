@@ -1,4 +1,4 @@
-import React, { lazy, Suspense, useState } from 'react';
+import React, { lazy, Suspense, useState, useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 import Header from './components/Header';
 import Body from './components/Body'
@@ -16,6 +16,9 @@ import Cart from './components/Cart';
 import UserContext from './utils/UserContext';
 import { Provider } from "react-redux";
 import store from "./utils/store";
+import { GoogleOAuthProvider } from '@react-oauth/google';
+import { GoogleLogin } from '@react-oauth/google';
+import jwtDecode from 'jwt-decode';
 
 /*
 Header
@@ -40,7 +43,7 @@ Footer
   - Copyright
 
 */
-
+ 
 const Instamart = lazy(() => import("./components/Instamart")) // Lazyloading / chuking / dynamic import  taking place 
 
 // Nested Children 
@@ -49,34 +52,52 @@ const AppLayout = () => {
   const [user, setUser] = useState({
     name: "From App",
     email: "App@gmail.com"
-  })
+  });
 
   return (
 
-    
     <React.Fragment>
-      <Provider  store={store}> 
-      {/* <Header />  since it is outside the usercontext it will get the default value and not that value which is been provided by the UserContext.provider*/} 
+      <Provider store={store}>
+        {/* <Header />  since it is outside the usercontext it will get the default value and not that value which is been provided by the UserContext.provider*/}
 
-      <UserContext.Provider value={{
-        user: user, setUser: setUser
-      }}>
+        <UserContext.Provider value={{
+          user: user, setUser: setUser
+        }}>
+
+          <GoogleOAuthProvider   clientId="447412681395-00bvglar18lni4oc4eb45gt0bubugig2.apps.googleusercontent.com">
+
+            <GoogleLogin
+              onSuccess={credentialResponse => {
+                const details = jwtDecode(credentialResponse.credential);
+                console.log(details);
+                setUser({
+                  name : details.given_name,
+                  email : details.email
+                })
+              }}
+              onError={() => {
+                console.log('Login Failed');
+              }}
+            />
+
+          </GoogleOAuthProvider>;
 
 
-        <Header />
+          <Header />
 
-        {/* Children are aways been rendered inside outlet */}
-        <Outlet />
+          {/* Children are aways been rendered inside outlet */}
+          <Outlet />
 
-        <Footer />
+          <Footer />
 
-      </UserContext.Provider>
+        </UserContext.Provider>
 
       </Provider>
     </React.Fragment>
-    
+
   )
 }
+
 
 const appRouter = createBrowserRouter([
 
@@ -92,7 +113,7 @@ const appRouter = createBrowserRouter([
         children: [
           {
             path: "profile",
-            element: <Profile />// Its outlet is been create in about.js file
+            element: <Profile/>// Its outlet is been create in about.js file
           }
         ]
       },
@@ -124,5 +145,4 @@ const appRouter = createBrowserRouter([
 ])
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
 root.render(<RouterProvider router={appRouter} />);

@@ -26,10 +26,8 @@ const RestrauntMenu = () => {
   // }
 
   return  (!restaurant) ? (<Shimmer />) : (
-    
-     
-      <div className='flex flex-wrap'>
 
+      <div className='flex flex-wrap'>
 
           {/* {restaurant[2].groupedCard.cardGroupMap.REGULAR.cards[1].card.card.itemCards.map((ele) => { */}
           {restaurant[2].groupedCard.cardGroupMap.REGULAR.cards[2].card.card.itemCards.map((ele) => {

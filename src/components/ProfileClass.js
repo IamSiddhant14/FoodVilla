@@ -1,7 +1,7 @@
 import React from 'react';
 import UserContext from '../utils/UserContext';
 
-class Profile extends React.Component {
+class Profile extends React.Component {  
 
     constructor(props){
 
@@ -27,7 +27,6 @@ class Profile extends React.Component {
         this.setState({
             userInfo: json 
         })
-        
 
        this.v = setInterval(() => { // Here this keyword is accessiible through out the element 
             console.log("componentDidMount")
@@ -52,7 +51,6 @@ class Profile extends React.Component {
         
         return (
             <>
-
 {/* How to use usecontext in a class component  */}
                 {/* <UserContext.Consumer>  //
                      {(user) => <h4>{user.name}</h4>}
@@ -76,12 +74,10 @@ class Profile extends React.Component {
                 <h2>Name : {this.state.userInfo.name }</h2>
                 <h2>Location : {this.state.userInfo.location }</h2>
 
-
-
             </>
         ) 
 
     }
 }
 
-export default Profile;
+export default Profile;;

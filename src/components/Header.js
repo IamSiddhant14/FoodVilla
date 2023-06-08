@@ -1,5 +1,5 @@
 import img from '../assets/foodvilla.png';
-import { Link } from "react-router-dom"
+import { Link } from "react-router-dom";
 import useOnline from "../utils/useOnline";
 import { useState , useContext } from "react";
 import UserContext from "../utils/UserContext";
@@ -17,7 +17,6 @@ const authenticateUser = () => {
     return 'true';
 }
 
-
 const Header = () => {
 
     const [toggle, setToggle] = useState('login');
@@ -25,15 +24,17 @@ const Header = () => {
     const isOnline = useOnline();
 
     const {user
-    } = useContext(UserContext)
+    } = useContext(UserContext);
+    console.log( user);
 
-    const cartItems = useSelector((store) => store.cart.items )
+    const cartItems = useSelector((store) => store.cart.items );
     
     return (
 
         <div className='flex justify-between bg-gray-200'>
 
             <Title  />
+            {/* { Title() } */}
 
             <div className='flex flex-col items-center'>
 
@@ -66,7 +67,7 @@ const Header = () => {
                 }
 
             // }}>{  toggle}</button>
-            }}>{toggle}</button>
+            }}>{  user.name+toggle}</button>
 
         </div>
 
