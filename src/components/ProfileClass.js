@@ -1,6 +1,8 @@
 import React from 'react';
 import UserContext from '../utils/UserContext';
 
+
+
 class Profile extends React.Component {  
 
     constructor(props){

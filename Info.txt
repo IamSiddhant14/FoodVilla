@@ -4,7 +4,7 @@ shortcut to boiler plate which are made avaliable in built
 It allows you to type shortcuts that are then expanded into full pieces of code.
 
 Difference between a Library and Framework?
- A libary is used for the sake of providing facility/functionality  and also promotes the code resuability while a framework is a supporting structure , here we fill the structure with our own needs
+ A libary is used for the sake of providing facility/functionality  and also promotes the code resuability while a framework is a supporting structure , here we fill the structure with our own needs.
 https://www.youtube.com/watch?v=LimOOe6I4eo&ab_channel=Codecademy
 
 What is CDN? Why do we use it?
@@ -29,8 +29,9 @@ What is async and defer?
   async : This refers to fetching(dowloading) the script encountered while prasing
   defer : This refers to executing the fetched script 
   https://www.youtube.com/watch?v=IrHmpdORLu8&t=246s&ab_channel=AkshaySaini
- 
-* To use react inside anything put it in the root element :
+
+Diffrence bw class Components and functional Components ?
+ Syantx , Class comp are extend from React.components while functional components are just function , class Comp ar statefull while functional component are stateless in nature , class comp have defined lifecycle method while functional componet use useeffect instead for the same 
 
 import CDN first 
 
@@ -42,6 +43,7 @@ root.render('h');
 // In html the function inside onClick is been called like this while in react it is diffrent- 
 
 * <button onClick="abc()"></button>
+
 function abc(){ 
   console.log("Hello");
 }
@@ -64,7 +66,7 @@ function abc(){
 
         <h1>Hello World</h1>
 
-Popular Bundlers : vite , parcel , webpacks
+Popular Bundlers : vite , parcel , webpacks( npx create-react-app )
 
 A bundler performs the following operations :
 
@@ -120,7 +122,7 @@ maintain the hash as well
 npm i -D parcel : This is a dev depencie
 npm install --save-dev parcel : This is also a dev depencie
 
-caret(Used for minor version's) : (^) , tilde(Used for major version's) : (~) ===== auto-upgrade 
+caret(Used for Bug's fixes ) : (^) , tilde(Used for major version's) : (~) ===== auto-upgrade 
 
 (STEP-3 ): npm install react react-dom
 npm i react
@@ -182,9 +184,13 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * Every Componet name starts with a capital letter
 
-* JSX always santizes our application from potencial threats
+* JSX always santizes our application from potencial threats 
 
 * Babel(A transpiler/compiler) convert JSX to react.createElement , which is the converted into an Object which is then react convert it to html to load it on the Dom
+
+** Object mai we dont need to iterate we can diretly find if the value exist or not 
+
+** Index is a very powerfull thing for determining change in state of a particular component in react , const [ currEle , setCurrEle ] = useState();
 
 * whenever putting in an object state in a state function we will always put in an object inside that another object will be ther 
 
@@ -257,7 +263,8 @@ async  function fetchProduct(){
 
 * Never change the value of state variable using the setState function directly in the code itself , but instaed  change it inside the useEffect or a in onChange 
 
-* [burger , pizza ].join(" , ") =>  burger, pizza 
+* console.log([burger , pizza ].join(" , ")) =>  burger, pizza 
+* console.log([burger , pizza ].join("")) =>  burgerpizza 
 
 * Config Driven UI : This method is been used for changing the UI on te bases of the backend UI
 
@@ -276,7 +283,6 @@ import Header from './dcsdc';
 }
 
 
-
 * In order to maintain a variable in react which changes itself we use a react variable(State varible ) as it value is been tracked by React unlike a normal variable 
 
 import {Title} from './dcsdc'; here the name should be same as that of the exported name as here destructing is beeen used which require it to be of the same name as if we need to rename it we could do it by the given code below 
@@ -291,7 +297,7 @@ import { Title as  tit } from './dcsdc' ;
 
 * onClick={() => filtreData()}
 Here this function is only been called when it is been clicked and not when the js engine skims through the entire program 
-
+ 
 * import * as obj from './components/Header' ; // This will import al things 
  
 obj.header
@@ -314,7 +320,7 @@ obj.header
 * e.target.value : It gives us the real time change in value of the input feild
 
 * arr.filtre((res) => {
-  return res.data.name.includes("abcss");
+  return res.data.name.includes("abcss");`
 
   ALSO 
 
@@ -472,6 +478,7 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
 
 *Parent Constructor
  Parent render
+
     First Child constructor
     First Child render
     Second Child constructor
@@ -498,6 +505,7 @@ return  !restaurant?.menu ? (<Shimmer />): (<MainComponent/>)
     return () => {
       console.log("component will unmount ")
     }
+    
   }, []);
 
   The above return function will work when we leave that page and perform unmounting 

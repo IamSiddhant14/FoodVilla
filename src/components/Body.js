@@ -1,18 +1,22 @@
 import Shimmer from "./Shimmer";
-import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom';
 // import { filterData } from '../utils/helper'
-import useOnline from '../utils/useOnline'
+import useOnline from '../utils/useOnline';
 import { useState, useEffect } from "react";
 import UserContext from "../utils/UserContext";
 import { useContext } from "react";
 import RestaurantCard from "./RestaurantCard";
 
 
+
+
+
+
 const Body = () => {
 
     // Here searchText is local state variable
-    //Here argument is default variable , here searchInput is the variable and setSearchInput is a function which is used to modifie searchText
-    // useState gives us an array of a variable and a function to update it ff
+    // Here argument is default variable , here searchInput is the variable and setSearchInput is a function which is used to modifie searchText
+    // useState gives us an array of a variable and a function to update it 
 
     const [searchInput, setSearchInput] = useState("");
 

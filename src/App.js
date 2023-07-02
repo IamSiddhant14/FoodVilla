@@ -7,8 +7,7 @@ import { createBrowserRouter, RouterProvider, Outlet } from 'react-router-dom';
 import About from './components/About';
 import Error from './components/Error';
 import Contact from './components/Contact'
-import RestrauntMenu
-  from './components/RestrauntMenu';
+import RestrauntMenu from './components/RestrauntMenu';
 import Profile from './components/Profile';
 import Shimmer from './components/Shimmer';
 // import Instamart from './components/Instamart'; Lazyloading/chuking taking place 
@@ -21,6 +20,7 @@ import { GoogleLogin } from '@react-oauth/google';
 import jwtDecode from 'jwt-decode';
 
 /*
+
 Header
 
   - Logo
@@ -44,7 +44,7 @@ Footer
 
 */
  
-const Instamart = lazy(() => import("./components/Instamart")) // Lazyloading / chuking / dynamic import  taking place 
+const Instamart = lazy(() => import("./components/Instamart")) // Lazyloading / chuking / dynamic import taking place 
 
 // Nested Children 
 const AppLayout = () => {
@@ -57,6 +57,7 @@ const AppLayout = () => {
   return (
 
     <React.Fragment>
+      
       <Provider store={store}>
         {/* <Header />  since it is outside the usercontext it will get the default value and not that value which is been provided by the UserContext.provider*/}
 
@@ -97,7 +98,6 @@ const AppLayout = () => {
 
   )
 }
-
 
 const appRouter = createBrowserRouter([
 
@@ -142,7 +142,7 @@ const appRouter = createBrowserRouter([
     ]
   }
 
-])
+]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(<RouterProvider router={appRouter} />);
