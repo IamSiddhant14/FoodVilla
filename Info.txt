@@ -549,7 +549,7 @@ element: (
      <Instamart />
   <Suspense />
 )
-
+   
 
 * backgroundColor and not background-color in react 
 
