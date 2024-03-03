@@ -10,7 +10,7 @@ https://www.youtube.com/watch?v=LimOOe6I4eo&ab_channel=Codecademy
 What is CDN? Why do we use it?
 content delivery network , Inc uptime , speed , secuity from d-doc attack and reduces the time
 
- Why is React known as React? 
+ Why is React known as React?
  react : Because it reacts to state change in virtul dom( A Javascript object which represent an DOM ) which evantually changes the real DOM changed entity only
  https://www.youtube.com/watch?v=N3AkSS5hXMA&ab_channel=ProgrammingwithMosh
 
@@ -30,8 +30,11 @@ What is async and defer?
   defer : This refers to executing the fetched script 
   https://www.youtube.com/watch?v=IrHmpdORLu8&t=246s&ab_channel=AkshaySaini
 
+A pure function in javascript is a function which creates no sideEffect out side of it , doesn't change the inputs as well also , when we we give it same set of inputs it return us the same output .
+
 Diffrence bw class Components and functional Components ?
- Syantx , Class comp are extend from React.components while functional components are just function , class Comp ar statefull while functional component are stateless in nature , class comp have defined lifecycle method while functional componet use useeffect instead for the same 
+ Syantx , Class comp are extend from React.components while functional components are just function , class Comp are statefull while functional component are stateless in nature , class comp have defined lifecycle method while functional componet use useeffect instead for the same 
+
 
 import CDN first 
 
@@ -67,7 +70,7 @@ function abc(){
         <h1>Hello World</h1>
 
 Popular Bundlers : vite , parcel , webpacks( npx create-react-app )
-
+e
 A bundler performs the following operations :
 
 * HMR : Hot Module Replacement , means auto reload on any change
@@ -162,7 +165,7 @@ browserlist ensure that our app works on the respective version as mentioned
 * To remove console.log addtional plugin will be needed like  : babel-plugin-transform-remove-console
 
 * We also need to configure this which could be find in the npm page only how to do this ,
- That is make a file using .babelrc and then copy as it is on NPM website
+ That is make a file using .babelrc and the n copy as it is on NPM website
 
 * Each React element should always have a key in it 
 
@@ -180,9 +183,9 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * There are two type of component in javascript : class based and function based component
 
-* { Anything written inside it is been executed/rendered }
+* { Anything written inside it is been executed/rendered};
 
-* Every Componet name starts with a capital letter
+* Every Componet name starts with a capital letter 
 
 * JSX always santizes our application from potencial threats 
 
@@ -198,7 +201,7 @@ browserlist ensure that our app works on the respective version as mentioned
 
 * <React.Fragment></React.Fragment> OR <></> is a react component provided by React
 
-* When multiple lines are present then after return in a functional component we need to wrap every thing in return ( ) as there exist multiple lines in it 
+* When multiple lines are present then after return in a functional component we need to wrap every thing in return ( ) as there exist multiple lines in it .
 
 * static , relative , absloute , fixed , sticky .
 
@@ -209,6 +212,7 @@ transition : background 3sec red
 *style="background-color:powderblue;"
  style={{backgroundColor: 'powderblue '}}
 
+* this in javascript reffers to enclosing lexical context .
 
 * Big websites uses config driven UI
 
@@ -282,14 +286,13 @@ import Header from './dcsdc';
 
 }
 
-
 * In order to maintain a variable in react which changes itself we use a react variable(State varible ) as it value is been tracked by React unlike a normal variable 
 
 import {Title} from './dcsdc'; here the name should be same as that of the exported name as here destructing is beeen used which require it to be of the same name as if we need to rename it we could do it by the given code below 
 
 import { Title as  tit } from './dcsdc' ;
 
-(STEP-5 ): Create a folder called src and inside that create a folder component then make all the components inside that only , inside the source folder we will also keep our constant and app.js file as well
+(STEP-5 ): Create a folder called src and inside that create a folder component then make all the components inside that only , inside the source folder we will also keep our constant and app.js file as well 
 
 * import Header , {Title} from './components/Header'; Here header is default one while Title is normal one
 
@@ -298,12 +301,12 @@ import { Title as  tit } from './dcsdc' ;
 * onClick={() => filtreData()}
 Here this function is only been called when it is been clicked and not when the js engine skims through the entire program 
  
-* import * as obj from './components/Header' ; // This will import al things 
+* import * as obj from './components/Header' ; // This will import all things 
  
 obj.header
 
 * In default export Renaming is possible  
-* BUt not possible in normale one  
+* But not possible in normale one  
 
 * We put All the static details in the config file/constant file
 
@@ -313,7 +316,7 @@ obj.header
 
 * (STEP-6 ): Make the router using the libary react-router-dom   
 
-* When we write any thing in the search bar(Input Tag) react rerenders the whole componenet this changes need to get refected in the search bar for that we take the help og useState and onChange method
+* When we write any thing in the search bar(Input Tag) react rerenders the whole componenet this changes need to get refected in the search bar for that we take the help og useState and onChange method  
 
 * All the children will go into the <outlet/> according to the route
 
@@ -352,7 +355,7 @@ It is nothing but just a javascript function given to us by react which provid u
   return <div>
       <h1>"hello"</h1>
    </div>
-}) 
+}) -*
 
 * Array.map(( ) => (
 
@@ -431,10 +434,10 @@ OR
  * Hooks start with a use keyword 
 
  * This is used to get error ,  
-  import { useRouteError } from "react-router-dom"; 
+  import { useRouteError } from "react-router-dom";   
 const err = useRouteError() ;
 consle.log( err.status + " : " + err.statusText)
-
+ 
 * client side routing means we are not getting anything from the server instead we have all of it we are just loading it   , ssg , csg , ssr 
 
 * Object.values converts list of object to a array of object
@@ -550,6 +553,15 @@ element: (
   <Suspense />
 )
    
+* {} -> curly brackets is been used to evalute the expression , numbers will go inside it for sure
+
+* A function in React is Something which return UI
+
+* Two way data binding means controlled forms
+
+* Lifting the state up and Prps drilling
+
+* Negative indexing for accesing an element is not possible in array while it is possible in string .
 
 * backgroundColor and not background-color in react 
 
@@ -584,7 +596,7 @@ if( !online ){
 
 * Props drilling means passing in data from one element to another continuesely  
 
-* We could not modiefie another sibling from it s sibbling to overcome it we use liftingTheStateUp property 
+* We could not modiefie another sibling from it sibbling to overcome it we use liftingTheStateUp property 
 
 * context is like a usestate for the entire application , centraly accessible 
 
@@ -896,11 +908,11 @@ r.appendChild(h);
 * Props are read only in nature that is we can modifie it statically ( color = 'pink' ) but not dynamically ( whith the help of onclick )
 
 * <div className="veiw">
-                                       This is possible in jsx
+    This is possible in jsx
     {veiws} Veiws <span>.</span> {time}
   </div>
 
-* 
+* <React.StrictMode></React.StrictMode> // This is Mainily been used as a wraaper arounf the main app componet so as to detect potencial threats during developemt
 
 
 const obj = {
